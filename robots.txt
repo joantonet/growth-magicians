@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://joantonet.github.io/growth-magicians/sitemap.xml

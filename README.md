@@ -1,5 +1,5 @@
 # Growth Magicians
 
-The Growth Magicians website. One page (`index.html`) plus the videos in `work/` and `team/`.
+The Growth Magicians website: https://joantonet.github.io/growth-magicians/
 
-Published with GitHub Pages from the `main` branch.
+One page (`index.html`) plus the videos in `work/` and `team/`. Published with GitHub Pages from the `main` branch.
