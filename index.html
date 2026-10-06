@@ -518,7 +518,7 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 .mate{aspect-ratio:9/16}
 .mate-media{position:absolute;inset:0;overflow:hidden}
 .mate canvas{display:block;position:absolute;inset:0;width:100%;height:100%}
-.mate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+.mate video,.mate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
 .mate-txt{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 16px 22px}
 .mate.has-video .mate-txt{padding-top:70px;color:#FFFFFF;background:linear-gradient(to top,rgba(22,20,28,.82) 0%,rgba(22,20,28,.45) 55%,rgba(22,20,28,0) 100%)}
 .mate.has-video p{color:#ECEAF2}
@@ -831,7 +831,7 @@ button.play.inline{position:static;transform:none;cursor:pointer}
       <div>
         <h2>The people behind the magic.</h2>
       </div>
-      <p>Two people who learn your voice and keep it consistent everywhere you show up. Point at either of us to say hi.</p>
+      <p>Two founders who learn your voice and keep it consistent everywhere you show up.</p>
     </div>
     <div class="team" id="teamList"></div>
     <div class="brands">
@@ -2004,12 +2004,13 @@ setTerm(6);
 // Swap in real names and roles here. Photos can replace the drawings later.
 const TEAM = [
   { name: 'Jo', role: 'Founder', tint: '#FFC21A', video: 'team/jo', poster: 'team/jo-poster.webp' },
-  { name: 'Niko', role: 'Role to come', seed: 4253, tint: '#3DB5FF', tbd: true }
+  { name: 'Niko', role: 'Founder', tint: '#3DB5FF', photo: 'team/niko.webp' }
 ];
 const mates = [];
 const teamEl = document.getElementById('teamList');
-teamEl.innerHTML = TEAM.map(m => `<article class="mate${m.video ? ' has-video' : ''}" style="--tint:${m.tint}"><div class="mate-media">${m.video
+teamEl.innerHTML = TEAM.map(m => `<article class="mate${m.video || m.photo ? ' has-video' : ''}" style="--tint:${m.tint}"><div class="mate-media">${m.video
   ? `<video poster="${m.poster || ''}" muted loop playsinline preload="none" aria-label="${esc(m.name)}, looping clip"><source src="${m.video}.webm" type="video/webm"><source src="${m.video}.mp4" type="video/mp4"></video>`
+  : m.photo ? `<img src="${m.photo}" alt="${esc(m.name)}, ${esc(m.role)}" loading="lazy" decoding="async" width="540" height="960">`
   : '<canvas aria-hidden="true"></canvas>'}</div><div class="mate-txt"><h3>${esc(m.name)}</h3><p>${esc(m.role)}</p>${m.tbd ? '<span class="tbd">To fill in</span>' : ''}</div></article>`).join('');
 teamEl.querySelectorAll('.mate').forEach((el, i) => {
   const vid = el.querySelector('video');
@@ -2023,7 +2024,8 @@ teamEl.querySelectorAll('.mate').forEach((el, i) => {
     }, { threshold: .4 }).observe(el);
     return;
   }
-  const c = el.querySelector('canvas'), ctx = c.getContext('2d');
+  const c = el.querySelector('canvas'); if (!c) return;
+  const ctx = c.getContext('2d');
   const p = makePerson(rng(TEAM[i].seed), 0, 0, 1, 1, 0);
   p.mode = 'star'; p.colorAmt = 1; p.hatAmt = 0; p.acc = null;
   const m = { el, c, ctx, p, W: 0, H: 0, d: 1, visible: false, want: 0, off: i * 1.7 };
