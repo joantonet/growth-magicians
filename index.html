@@ -24,6 +24,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://joantonet.github.io/growth-magicians/#org","name":"Growth Magicians","url":"https://joantonet.github.io/growth-magicians/","logo":"https://joantonet.github.io/growth-magicians/icon-512.png","image":"https://joantonet.github.io/growth-magicians/og.png","description":"Growth Magicians writes and produces LinkedIn posts, search articles, short videos and images in your own voice, so people notice you and remember what you do.","slogan":"Be the founder the room stops for.","areaServed":"Worldwide","priceRange":"$3,150 to $6,500 per month","knowsAbout":["LinkedIn content for founders","SEO articles","AI search optimization","Short-form video","Carousels and social images"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Monthly plans","itemListElement":[{"@type":"Offer","name":"Presence","description":"3 text posts, 3 image posts and 2 carousels a month, 4 short video scripts a month, 5 long articles a month, a monthly report.","priceCurrency":"USD","price":"3360","url":"https://joantonet.github.io/growth-magicians/#pricing"},{"@type":"Offer","name":"Authority","description":"8 text posts, 8 image posts and 4 carousels a month, 10 short videos a month, 5 new articles and 5 refreshes a month.","priceCurrency":"USD","price":"4800","url":"https://joantonet.github.io/growth-magicians/#pricing"},{"@type":"Offer","name":"Pro","description":"8 text posts, 8 image posts and 4 carousels a month, 20 short videos a month, 5 new articles and 5 refreshes a month.","priceCurrency":"USD","price":"6240","url":"https://joantonet.github.io/growth-magicians/#pricing"}]},"potentialAction":{"@type":"ReserveAction","name":"Book a discovery call","target":"https://calendly.com/jo-growthmagicians/discovery-call"}},{"@type":"WebSite","@id":"https://joantonet.github.io/growth-magicians/#site","url":"https://joantonet.github.io/growth-magicians/","name":"Growth Magicians","publisher":{"@id":"https://joantonet.github.io/growth-magicians/#org"},"inLanguage":"en"}]}</script>
 <style>html,body{margin:0}</style>
+<script>try{var t=localStorage.getItem('gm-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>Growth Magicians | Founder-led content that gets you noticed</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,6 +84,14 @@ a{color:inherit}
 .nav-right{display:flex;align-items:center;gap:10px}
 .menu-btn{display:none;align-items:center;gap:8px;font:700 15px/1 var(--f-body);padding:10px 14px;border-radius:999px;border:2.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
 .menu-btn svg{width:18px;height:18px}
+.theme-btn{width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:50%;border:2.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:background .2s, color .2s, transform .5s cubic-bezier(.34,1.56,.64,1)}
+.theme-btn:hover{background:var(--c-sun);color:#16141C;transform:rotate(20deg)}
+.theme-btn svg{width:20px;height:20px;grid-area:1/1;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:opacity .25s, transform .5s var(--ease)}
+.theme-btn .i-sun{opacity:0;transform:rotate(-60deg) scale(.6)}
+:root[data-theme="dark"] .theme-btn .i-moon{opacity:0;transform:rotate(60deg) scale(.6)}
+:root[data-theme="dark"] .theme-btn .i-sun{opacity:1;transform:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme-btn .i-moon{opacity:0;transform:rotate(60deg) scale(.6)}:root:not([data-theme="light"]) .theme-btn .i-sun{opacity:1;transform:none}}
+@media (pointer:coarse){.theme-btn{width:44px;height:44px}}
 .menu-btn svg path{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;fill:none;transition:transform .35s var(--ease);transform-origin:50% 50%}
 .nav.open .menu-btn .l1{transform:translateY(4px) rotate(45deg)}
 .nav.open .menu-btn .l2{transform:translateY(-4px) rotate(-45deg)}
@@ -142,10 +151,10 @@ button.chip{cursor:pointer;transition:background .2s, transform .35s var(--ease)
 button.chip:hover{background:var(--c-sky);color:#16141C;transform:translateY(-2px)}
 @media (pointer:coarse){.chip,.btn.sm,.menu-btn{min-height:44px;padding-inline:16px}}
 @keyframes blink{to{visibility:hidden}}
-.star-tag{position:absolute;left:0;top:0;z-index:3;pointer-events:none;white-space:nowrap;font:500 13.5px/1.2 var(--f-body);background:var(--ink);color:var(--on-ink);padding:8px 13px;border-radius:12px;opacity:0;transition:opacity .25s;will-change:transform}
+.star-tag{position:absolute;left:0;top:0;z-index:3;pointer-events:none;white-space:nowrap;font:500 13.5px/1.2 var(--f-body);background:#16141C;color:#F3F4EE;box-shadow:0 0 0 1.5px rgba(243,244,238,.4);padding:8px 13px;border-radius:12px;opacity:0;transition:opacity .25s;will-change:transform}
 .star-tag.on{opacity:1}
 .star-tag b{font-weight:800}
-.star-tag::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:var(--ink);transform:translateX(-50%) rotate(45deg);border-radius:2px}
+.star-tag::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;background:#16141C;transform:translateX(-50%) rotate(45deg);border-radius:2px}
 
 /* ---------- sections ---------- */
 .block{padding-block:clamp(64px,9vw,120px) 0}
@@ -560,6 +569,10 @@ button.play.inline{position:static;transform:none;cursor:pointer}
       <a href="https://calendly.com/jo-growthmagicians/discovery-call" target="_blank" rel="noopener" class="menu-only">Book a call</a>
     </div>
     <div class="nav-right">
+      <button class="theme-btn" type="button" id="themeBtn" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>
+      </button>
       <a class="btn sm" href="https://calendly.com/jo-growthmagicians/discovery-call" target="_blank" rel="noopener" data-look="hero">Book a call</a>
       <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="navLinks">
         <svg viewBox="0 0 18 18" aria-hidden="true"><path class="l1" d="M3 5h12"/><path class="l2" d="M3 13h12"/></svg>
@@ -934,11 +947,28 @@ const P = { ink:'#16141C', paper:'#F3F4EE', tone:'#E4E6DB' };
 function readTheme(){
   const cs = getComputedStyle(document.documentElement);
   const g = (n, f) => { const v = cs.getPropertyValue(n).trim(); return /^#[0-9a-f]{6}$/i.test(v) ? v : f; };
-  P.ink = g('--ink', P.ink); P.band = g('--band', P.band || '#5A31F4'); P.paper = g('--paper', P.paper); P.tone = g('--paper-2', P.tone);
+  // the little people always use their light-mode colors; pageInk and page follow the theme
+  P.pageInk = g('--ink', P.ink); P.page = g('--paper', P.paper); P.band = g('--band', P.band || '#5A31F4');
   P.ver = (P.ver || 0) + 1;
 }
 readTheme();
 try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readTheme); } catch(e){}
+
+/* ---------- light / dark switch ---------- */
+(() => {
+  const btn = document.getElementById('themeBtn'), root = document.documentElement;
+  const sysDark = matchMedia('(prefers-color-scheme: dark)');
+  const current = () => root.getAttribute('data-theme') || (sysDark.matches ? 'dark' : 'light');
+  const label = () => { const to = current() === 'dark' ? 'light' : 'dark'; btn.setAttribute('aria-label', 'Switch to ' + to + ' mode'); btn.title = 'Switch to ' + to + ' mode'; const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = current() === 'dark' ? '#141318' : '#F3F4EE'; };
+  btn.addEventListener('click', () => {
+    const to = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', to);
+    try { localStorage.setItem('gm-theme', to); } catch(e){}
+    label();
+  });
+  try { sysDark.addEventListener('change', label); } catch(e){}
+  label();
+})();
 new MutationObserver(readTheme).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
 
 /* ---------- utils ---------- */
@@ -1456,6 +1486,7 @@ class Stage {
       }
     }
     out.sort((a, b) => a.y - b.y);
+    this.fadeTo = Math.max(.2, (W < 620 && opts.yTopSmall ? opts.yTopSmall : opts.yTop) - .2);
     this.people = out; this.builtW = W; this.star = null; this.target = null;
     if (this.tag) this.tag.classList.remove('on');
   }
@@ -1531,7 +1562,11 @@ class Stage {
   draw(now){
     const { ctx, W, H, dpr } = this;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.fillStyle = P.paper; ctx.fillRect(0, 0, W, H); // opaque canvas: cheaper for the browser to put on screen
+    // opaque canvas: cheaper for the browser to put on screen. In dark mode the crowd stands on a lit stage
+    // that fades up into the dark page, so the people look the same in both themes.
+    if (P.page === P.paper) ctx.fillStyle = P.paper;
+    else { const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, P.page); g.addColorStop(.06, P.page); g.addColorStop(this.fadeTo, P.paper); ctx.fillStyle = g; }
+    ctx.fillRect(0, 0, W, H);
     // floor line
     R_ = rng(99 + boil * 31);
     ctx.strokeStyle = P.ink; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
@@ -2009,7 +2044,7 @@ document.querySelectorAll('.edge').forEach(el => {
   new IntersectionObserver(es => { sc.visible = es[0].isIntersecting; }).observe(el);
   sc.draw = () => {
     if (sc.ver !== P.ver){ sc.ver = P.ver; const v = getComputedStyle(sc.host || document.documentElement).getPropertyValue('--band').trim(); sc.fill = /^#[0-9a-f]{6}$/i.test(v) ? v : P.band; }
-    const key = boil + P.ink + sc.fill;
+    const key = boil + P.pageInk + sc.fill;
     if (!sc.visible || !sc.W || sc.last === key) return;
     sc.last = key;
     R_ = rng(sc.seed + boil * 131);
@@ -2022,7 +2057,7 @@ document.querySelectorAll('.edge').forEach(el => {
     ctx.fillStyle = sc.fill; ctx.fill();
     ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
     for (const p of pts) ctx.lineTo(p[0], p[1]);
-    ctx.strokeStyle = P.ink; ctx.lineWidth = 2.6; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.stroke();
+    ctx.strokeStyle = P.pageInk; ctx.lineWidth = 2.6; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.stroke();
   };
   size(); scribbles.push(sc);
 });
