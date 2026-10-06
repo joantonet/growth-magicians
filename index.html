@@ -525,10 +525,10 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 .mate-txt{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 16px 22px}
 .mate.has-video .mate-txt{padding-top:70px;color:#FFFFFF;background:linear-gradient(to top,rgba(22,20,28,.82) 0%,rgba(22,20,28,.45) 55%,rgba(22,20,28,0) 100%)}
 .mate.has-video p{color:#ECEAF2}
-.mate h3{margin:0 0 3px;font-size:19px}
+.mate h3{margin:0;font-size:22px;transition:color .3s, text-shadow .3s}
+.mate.has-video:hover h3,.mate.has-video.is-live h3{color:#FFC21A;text-shadow:0 0 14px rgba(255,194,26,.6)}
 .mate p{margin:0;font-size:15px;color:#2B2833}
 .mate p{transition:color .3s, text-shadow .3s}
-.mate.has-video:hover p,.mate.has-video.is-live p{color:#FFC21A;font-weight:700;text-shadow:0 0 14px rgba(255,194,26,.65)}
 .mate:not(.has-video):hover p{color:#16141C;font-weight:700}
 .mate .tbd{display:inline-block;margin-top:10px;font:600 12px/1 var(--f-body);padding:6px 9px;border:1.5px dashed #16141C;border-radius:999px}
 
@@ -2015,8 +2015,8 @@ const mates = [];
 const teamEl = document.getElementById('teamList');
 teamEl.innerHTML = TEAM.map(m => `<article class="mate${m.video || m.photo ? ' has-video' : ''}" style="--tint:${m.tint}"><div class="mate-media">${m.video
   ? `<video poster="${m.poster || ''}" muted loop playsinline preload="none" aria-label="${esc(m.name)}, looping clip"><source src="${m.video}.webm" type="video/webm"><source src="${m.video}.mp4" type="video/mp4"></video>`
-  : m.photo ? `<img src="${m.photo}" alt="${esc(m.name)}, ${esc(m.role)}" loading="lazy" decoding="async" width="540" height="960">`
-  : '<canvas aria-hidden="true"></canvas>'}</div><div class="mate-txt"><h3>${esc(m.name)}</h3><p>${esc(m.role)}</p>${m.tbd ? '<span class="tbd">To fill in</span>' : ''}</div></article>`).join('');
+  : m.photo ? `<img src="${m.photo}" alt="${esc(m.name)}" loading="lazy" decoding="async" width="540" height="960">`
+  : '<canvas aria-hidden="true"></canvas>'}</div><div class="mate-txt"><h3>${esc(m.name)}</h3>${m.tbd ? '<span class="tbd">To fill in</span>' : ''}</div></article>`).join('');
 teamEl.querySelectorAll('.mate').forEach((el, i) => {
   const vid = el.querySelector('video');
   if (vid){
