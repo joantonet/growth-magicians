@@ -2015,7 +2015,7 @@ const mates = [];
 const teamEl = document.getElementById('teamList');
 teamEl.innerHTML = TEAM.map(m => `<article class="mate${m.video || m.photo ? ' has-video' : ''}" style="--tint:${m.tint}"><div class="mate-media">${m.video
   ? `<video poster="${m.poster || ''}" muted loop playsinline preload="none" aria-label="${esc(m.name)}, looping clip"><source src="${m.video}.webm" type="video/webm"><source src="${m.video}.mp4" type="video/mp4"></video>`
-  : m.photo ? `<img src="${m.photo}" alt="${esc(m.name)}" loading="lazy" decoding="async" width="540" height="960">`
+  : m.photo ? `<img src="${m.photo}" alt="${esc(m.name)}" loading="lazy" decoding="async" width="720" height="1280">`
   : '<canvas aria-hidden="true"></canvas>'}</div><div class="mate-txt"><h3>${esc(m.name)}</h3>${m.tbd ? '<span class="tbd">To fill in</span>' : ''}</div></article>`).join('');
 teamEl.querySelectorAll('.mate').forEach((el, i) => {
   const vid = el.querySelector('video');
