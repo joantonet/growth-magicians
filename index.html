@@ -1486,7 +1486,11 @@ class Stage {
       }
     }
     out.sort((a, b) => a.y - b.y);
-    this.fadeTo = Math.max(.2, (W < 620 && opts.yTopSmall ? opts.yTopSmall : opts.yTop) - .2);
+    // dark mode: where the pool of light under the crowd begins, a little above the back row's heads
+    const yTopNow = W < 620 && opts.yTopSmall ? opts.yTopSmall : opts.yTop;
+    this.edgeY = Math.max(.1, yTopNow - 150 * .6 * opts.scale / 440 - .13);
+    const SR = rng(opts.seed * 131 + 5);
+    this.sky = Array.from({ length: Math.max(4, Math.round(W / 190)) }, () => ({ x: SR(), y: SR(), s: 2.2 + SR() * 2.6, ph: SR() * TAU, sp: .7 + SR() * 1.1 }));
     this.people = out; this.builtW = W; this.star = null; this.target = null;
     if (this.tag) this.tag.classList.remove('on');
   }
@@ -1559,14 +1563,39 @@ class Stage {
       q.tilt += (want - q.tilt) * Math.min(1, dt * 6);
     }
   }
+  // Dark mode: the crowd stands in a hand-drawn pool of light. Its top edge is uneven, drifts slowly like
+  // a low hill of light, and glows softly into the dark page, with a few faint twinkles above it.
+  litStage(now){
+    const { ctx, W, H } = this, t = reduced ? 0 : now;
+    ctx.fillStyle = P.page; ctx.fillRect(0, 0, W, H);
+    const base = H * this.edgeY, amp = Math.min(24, H * .055);
+    const yAt = x => base + Math.sin(x * .0052 + t * .32) * amp + Math.sin(x * .0143 - t * .47 + 1.3) * amp * .5 + Math.sin(x * .037 + t * .8 + 4) * amp * .17;
+    R_ = rng(4242 + boil * 53);
+    const edge = P2(); edge.moveTo(-30, yAt(-30));
+    for (let x = -6; x <= W + 30; x += 24) edge.lineTo(x, yAt(x) + (R_() - .5) * 1.6);
+    // faint twinkles in the dark above the light
+    ctx.fillStyle = P.paper;
+    for (const k of this.sky){
+      const a = .12 + .5 * Math.max(0, Math.sin(t * k.sp + k.ph)), x = k.x * W, y = 6 + k.y * Math.max(8, yAt(k.x * W) - amp - 30), q = k.s * (.7 + a);
+      ctx.globalAlpha = a; ctx.beginPath();
+      ctx.moveTo(x, y - q); ctx.quadraticCurveTo(x + q * .15, y - q * .15, x + q, y); ctx.quadraticCurveTo(x + q * .15, y + q * .15, x, y + q);
+      ctx.quadraticCurveTo(x - q * .15, y + q * .15, x - q, y); ctx.quadraticCurveTo(x - q * .15, y - q * .15, x, y - q); ctx.fill();
+    }
+    // soft glow spilling up from the edge
+    ctx.strokeStyle = P.paper; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    for (const [w, a] of [[110, .035], [70, .05], [40, .07], [18, .11]]){ ctx.globalAlpha = a; ctx.lineWidth = w; ctx.stroke(edge); }
+    ctx.globalAlpha = 1;
+    // the lit floor itself
+    const pool = new Path2D(edge); pool.lineTo(W + 30, H + 2); pool.lineTo(-30, H + 2); pool.closePath();
+    ctx.fillStyle = P.paper; ctx.fill(pool);
+  }
   draw(now){
     const { ctx, W, H, dpr } = this;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     // opaque canvas: cheaper for the browser to put on screen. In dark mode the crowd stands on a lit stage
     // that fades up into the dark page, so the people look the same in both themes.
-    if (P.page === P.paper) ctx.fillStyle = P.paper;
-    else { const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, P.page); g.addColorStop(.06, P.page); g.addColorStop(this.fadeTo, P.paper); ctx.fillStyle = g; }
-    ctx.fillRect(0, 0, W, H);
+    if (P.page === P.paper){ ctx.fillStyle = P.paper; ctx.fillRect(0, 0, W, H); }
+    else this.litStage(now);
     // floor line
     R_ = rng(99 + boil * 31);
     ctx.strokeStyle = P.ink; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
