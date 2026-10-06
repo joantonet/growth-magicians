@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Growth Magicians">
 <meta property="og:title" content="Growth Magicians | Founder-led content that gets you noticed">
-<meta property="og:description" content="Be the founder the room stops for. LinkedIn posts, search articles, short videos and images in your own voice.">
+<meta property="og:description" content="Be the founder people would book calls with. LinkedIn posts, search articles, short videos and images in your own voice.">
 <meta property="og:url" content="https://joantonet.github.io/growth-magicians/">
 <meta property="og:image" content="https://joantonet.github.io/growth-magicians/og.png">
 <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Growth Magicians logo with the line: Be the founder the room stops for.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Growth Magicians | Founder-led content that gets you noticed">
-<meta name="twitter:description" content="Be the founder the room stops for. LinkedIn posts, search articles, short videos and images in your own voice.">
+<meta name="twitter:description" content="Be the founder people would book calls with. LinkedIn posts, search articles, short videos and images in your own voice.">
 <meta name="twitter:image" content="https://joantonet.github.io/growth-magicians/og.png">
 <meta name="theme-color" content="#F3F4EE">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F3F4EE'/%3E%3Cg transform='translate(4 10) rotate(-8 28 22)'%3E%3Cpath fill='%2317193F' d='M14 5Q14 1 30 1Q46 1 46 5L43 34H17Z'/%3E%3Cpath fill='%237655AC' d='M16.3 25H43.7L43 34H17Z'/%3E%3Cpath fill='%2317193F' d='M2 36Q30 30 58 36Q60 42 52 43Q30 38 8 43Q0 42 2 36Z'/%3E%3C/g%3E%3C/svg%3E">
@@ -302,14 +302,14 @@ h3{font:800 21px/1.2 var(--f-body);margin:0 0 8px;letter-spacing:-.01em}
 .steps::before{content:"";position:absolute;left:0;right:0;top:31px;border-top:2.5px dashed var(--ink);z-index:0}
 @media (max-width:980px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps::before{display:none}}
 @media (max-width:520px){.steps{grid-template-columns:1fr}}
-.steps li{position:relative;z-index:1}
-.num{width:64px;height:64px;border-radius:50%;border:2.5px solid var(--ink);background:var(--paper);display:grid;place-items:center;font:800 30px/1 var(--f-display);margin-bottom:20px;transition:background .25s, transform .5s var(--ease)}
+.steps li{position:relative;z-index:1;text-align:center}
+.num{width:64px;height:64px;border-radius:50%;border:2.5px solid var(--ink);background:var(--paper);display:grid;place-items:center;font:800 30px/1 var(--f-display);font-variant-numeric:lining-nums tabular-nums;margin:0 auto 20px;transition:background .25s, transform .5s var(--ease)}
 .steps li:nth-child(1){--c:var(--c-sun)}
 .steps li:nth-child(2){--c:var(--c-sky)}
 .steps li:nth-child(3){--c:var(--c-pink)}
 .steps li:nth-child(4){--c:var(--c-mint)}
 .steps li:hover .num{background:var(--c);color:#16141C;transform:rotate(-8deg)}
-.steps p{margin:0;color:var(--ink-2);font-size:16px;max-width:30ch}
+.steps p{margin:0 auto;color:var(--ink-2);font-size:16px;max-width:30ch}
 
 /* fit */
 .fit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
@@ -465,6 +465,9 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 .brand-row{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px 44px}
 .brand-row li{font:800 clamp(21px,2.1vw,27px)/1.1 var(--f-display);font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144;color:var(--ink-2);transition:color .3s, transform .45s var(--ease)}
 .brand-row li:hover{color:var(--ink);transform:translateY(-3px) rotate(-2deg)}
+.brand-row li.logo{display:block;box-sizing:border-box;width:176px;height:100px;padding:16px 20px;background:#FFFFFF;border:2.5px solid #16141C;border-radius:18px;box-shadow:4px 4px 0 var(--ink-2)}
+.brand-row li.logo img{display:block;width:100%;height:100%;object-fit:contain}
+@media (max-width:520px){.brand-row{gap:14px}.brand-row li.logo{width:calc(50% - 7px);max-width:176px;height:88px;padding:14px 16px}}
 .brand-row li.tbd{font:600 13.5px/1 var(--f-body);font-variation-settings:normal;padding:17px 22px;border:2px dashed var(--ink-2);border-radius:14px}
 
 /* pricing */
@@ -587,7 +590,7 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 
   <header class="hero">
     <div>
-      <h1>Be the <span class="lit" id="litWord">founder<i aria-hidden="true"></i></span> the room <span class="squig">stops for.</span></h1>
+      <h1>Be the <span class="lit" id="litWord">founder<i aria-hidden="true"></i></span> people would <span class="squig">book calls with.</span></h1>
     </div>
     <div>
       <p class="lede">Most founders blend into the feed. <strong>Growth Magicians</strong> writes and produces your LinkedIn posts, search articles, short videos and images in your own voice, so people notice you and remember what you do.</p>
@@ -1977,11 +1980,13 @@ route();
 /* ---------- brands we've worked with ---------- */
 // Add a brand once it's cleared to be listed. { name } shows as type; add logo: 'data:...' for a logo.
 const BRANDS = [
-  { name: 'Schmidt Consulting Group' },
-  { tbd: true }, { tbd: true }, { tbd: true }
+  { name: 'Schmidt Consulting', logo: 'brands/schmidt.webp', w: 378, h: 84 },
+  { name: 'Hilton', logo: 'brands/hilton.webp', w: 308, h: 200 },
+  { name: 'Toei Animation', logo: 'brands/toei.webp', w: 329, h: 200 },
+  { name: 'Mighty Jaxx', logo: 'brands/mighty-jaxx.webp', w: 262, h: 200 }
 ];
 document.getElementById('brandRow').innerHTML = BRANDS.map(b => b.tbd ? '<li class="tbd">Logo to come</li>'
-  : '<li>' + (b.logo ? `<img src="${b.logo}" alt="${esc(b.name)}" style="height:34px;width:auto;display:block">` : `<span>${esc(b.name)}</span>`)
+  : '<li' + (b.logo ? ' class="logo"' : '') + '>' + (b.logo ? `<img src="${b.logo}" alt="${esc(b.name)}" width="${b.w}" height="${b.h}" loading="lazy" decoding="async">` : `<span>${esc(b.name)}</span>`)
     + '</li>').join('');
 
 /* ---------- pricing: plan length toggle ---------- */
