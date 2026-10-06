@@ -763,7 +763,6 @@ button.play.inline{position:static;transform:none;cursor:pointer}
         <a class="btn" href="#book" data-pick="Something different">Just talk to us</a>
       </article>
     </div>
-    <p class="plan-foot">A one-time setup fee is quoted on your first call.</p>
   </section>
 
   <section class="wrap block" id="fit">
@@ -1884,14 +1883,13 @@ route();
 
 /* ---------- brands we've worked with ---------- */
 // Add a brand once it's cleared to be listed. { name } shows as type; add logo: 'data:...' for a logo.
-// gm: true marks work done through Growth Magicians; leave it off for work from team members' earlier roles.
 const BRANDS = [
-  { name: 'Schmidt Consulting Group', gm: true },
+  { name: 'Schmidt Consulting Group' },
   { tbd: true }, { tbd: true }, { tbd: true }
 ];
 document.getElementById('brandRow').innerHTML = BRANDS.map(b => b.tbd ? '<li class="tbd">Logo to come</li>'
   : '<li>' + (b.logo ? `<img src="${b.logo}" alt="${esc(b.name)}" style="height:34px;width:auto;display:block">` : `<span>${esc(b.name)}</span>`)
-    + (b.gm ? '<span class="via">Growth Magicians client</span>' : '') + '</li>').join('');
+    + '</li>').join('');
 
 /* ---------- pricing: plan length toggle ---------- */
 const money = n => '$' + Number(n).toLocaleString('en-US');
