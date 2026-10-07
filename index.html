@@ -1008,6 +1008,9 @@ const WHO = [
   ['Luis','CEO, solar company'],['Ines','founder, fitness app'],['Theo','CEO, robotics'],
   ['Amara','founder, fashion label'],['Kenji','CEO, data platform']
 ];
+// names follow the look: long, bun, pony and bob hair get the women's names, bald (bearded) and cap get the men's, the rest take turns
+const WHO_F = WHO.filter((w, i) => i % 2 === 0), WHO_M = WHO.filter((w, i) => i % 2 === 1);
+const LOOK_F = ['long','bun','pony','bob'], LOOK_M = ['bald','cap'];
 
 /* ---------- drawing primitives (hand-drawn wobble) ---------- */
 let R_ = Math.random, JIT = 0.75, LW = 2.6;
@@ -1404,7 +1407,7 @@ function drawAwe(ctx, p, now){
 }
 
 /* ---------- a stage full of people ---------- */
-let whoIdx = 0;
+let whoF = 0, whoM = 0, whoAny = 0;
 function makePerson(R, x, y, s, dir, v){
   const pick = a => a[(R() * a.length) | 0];
   const roll = R();
@@ -1417,9 +1420,11 @@ function makePerson(R, x, y, s, dir, v){
     acc: roll < .13 ? 'book' : roll < .24 ? 'cup' : roll < .34 ? 'bag' : null,
     scarf: R() < .14, glasses: R() < .28,
     c: { top: pick(COLORS), bot: pick(PANTS), skin: pick(SKIN), hair: pick(HAIRC), acc: pick(SPARK) },
-    who: WHO[(whoIdx++) % WHO.length],
+    who: null,
     mode: 'walk', pending: null, react: 0, colorAmt: 0, awe: 0, aweT: 0, hop: 0, pop: 0, tilt: 0, mark: R()
   };
+  const fem = LOOK_F.includes(p.hair) ? true : LOOK_M.includes(p.hair) ? false : (whoAny++ % 2 === 0);
+  p.who = fem ? WHO_F[(whoF++) % WHO_F.length] : WHO_M[(whoM++) % WHO_M.length];
   if (p.c.acc === p.c.top) p.c.acc = SPARK[(SPARK.indexOf(p.c.acc) + 2) % SPARK.length];
   return p;
 }
