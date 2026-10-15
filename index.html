@@ -933,7 +933,8 @@ button.play.inline{position:static;transform:none;cursor:pointer}
   }
   function tick(ts){
     if (!playing) return;
-    t = Math.min(D, t + (ts - last)); last = ts;
+    const vt = vid.currentTime * 1000;
+    t = (!vid.paused && vid.readyState >= 3 && Math.abs(vt - t) < 600) ? Math.min(D, vt) : Math.min(D, t + (ts - last)); last = ts;
     if (t >= D){ playing = false; done = true; vid.pause(); }
     render();
     if (playing) requestAnimationFrame(tick);
@@ -948,7 +949,7 @@ button.play.inline{position:static;transform:none;cursor:pointer}
   cards.forEach(c => c.querySelector('button').addEventListener('click', () => start(Math.max(1, +c.dataset.t))));
   if (reduced){ t = D; done = true; }
   render();
-  new IntersectionObserver((es, o) => { if (es[0].isIntersecting){ o.disconnect(); vid.preload = 'auto'; vid.load(); if (reduced){ vid.addEventListener('loadeddata', () => seek(D), { once: true }); return; } vid.addEventListener('loadeddata', () => setTimeout(() => start(0), 250), { once: true }); setTimeout(() => { if (!done) start(0); }, 2500); } }, { rootMargin: '0px 0px -30% 0px' }).observe(root);
+  new IntersectionObserver((es, o) => { if (es[0].isIntersecting){ o.disconnect(); vid.preload = 'auto'; vid.load(); if (reduced){ vid.addEventListener('loadeddata', () => seek(D), { once: true }); return; } vid.addEventListener('loadeddata', () => setTimeout(() => start(0), 250), { once: true }); setTimeout(() => { if (!done) start(0); }, 2500); } }, { threshold: .35 }).observe(root);
 })();
     </script>
     <p class="why-note">We build those first seconds for you either way. If you film, your script tells you exactly how to open. If you don't, we write interview questions designed to get answers that open strong, then pick your best moments, put the hook on screen, and cut each one to the pace of a video that already worked.</p>
