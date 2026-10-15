@@ -577,46 +577,67 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 .tl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
 @media (max-width:820px){.tl{grid-template-columns:1fr;justify-items:center}.tl-side{width:100%}}
 /* the phone */
-.ph{width:clamp(220px,22vw,280px);aspect-ratio:9/16;border-radius:34px;padding:9px;background:#16141C;box-shadow:0 0 0 2.5px #16141C,10px 12px 0 #16141C;transform:rotate(-3deg);transition:transform .6s var(--ease)}
+.ph{position:relative;width:clamp(240px,22vw,292px);aspect-ratio:9/19.5;border-radius:50px;padding:10px;background:linear-gradient(150deg,#4a4a52 0%,#18181c 22%,#0b0b0d 60%,#33333a 100%);box-shadow:inset 0 0 0 1.5px #6a6a73,inset 0 0 0 4px #0b0b0d,0 34px 60px -18px rgba(10,6,40,.6),0 10px 22px rgba(10,6,40,.25);transform:rotate(-3deg);transition:transform .6s var(--ease)}
+.ph::before,.ph::after{content:"";position:absolute;width:4px;border-radius:2px;background:#2b2b31}
+.ph::before{left:-3px;top:22%;height:13%;box-shadow:0 -11% 0 #2b2b31}
+.ph::after{right:-3px;top:28%;height:18%}
 .tl.playing .ph{transform:rotate(0)}
-.ph-screen{position:relative;width:100%;height:100%;border-radius:26px;overflow:hidden;background:#2B2540}
-.ph-scene{position:absolute;inset:0;transition:transform .12s steps(1)}
-.ph-scene[data-cut="0"]{transform:scale(1.22) translate(-4%,6%)}
-.ph-scene[data-cut="1"]{transform:scale(1.06) translate(5%,0)}
-.ph-scene[data-cut="2"]{transform:scale(1.34) translate(2%,10%)}
-.ph-bg{position:absolute;inset:0;background:radial-gradient(120% 70% at 30% 20%,#7A5CFF 0%,#3B2B7A 55%,#241C45 100%)}
-.ph-bg::after{content:"";position:absolute;left:-10%;right:-10%;bottom:0;height:34%;background:#1B1533}
-.ph-body{position:absolute;left:18%;right:18%;bottom:-6%;height:42%;border-radius:48% 48% 0 0;background:#FFC21A;box-shadow:inset 0 0 0 3px #16141C}
-.ph-head{position:absolute;left:50%;top:30%;width:34%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:#F4C9A4;box-shadow:inset 0 0 0 3px #16141C}
-.ph-head::before{content:"";position:absolute;left:-6%;right:-6%;top:-8%;height:46%;border-radius:50% 50% 30% 30%;background:#16141C}
-.ph-head i{position:absolute;top:52%;width:9%;height:9%;border-radius:50%;background:#16141C}
-.ph-head i:first-child{left:32%}.ph-head i:nth-child(2){right:32%}
-.ph-head b{position:absolute;left:38%;right:38%;top:72%;height:7%;border-radius:0 0 10px 10px;background:#16141C;transition:height .2s}
-.tl.s1 .ph-head b{animation:talk .26s steps(2) infinite}
-.tl:not(.playing) .ph-head b{animation:none}
-@keyframes talk{50%{height:13%}}
-.ph-bar{position:absolute;left:12px;right:12px;top:12px;height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden}
-.ph-bar span{display:block;height:100%;width:calc(var(--p,0) * 100%);background:#FFFFFF}
-.ph-hooked{position:absolute;left:12px;top:24px;display:flex;align-items:center;gap:6px;font:800 10.5px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:#FFFFFF;background:rgba(22,20,28,.55);padding:6px 8px;border-radius:999px}
-.ph-hooked em{display:block;width:44px;height:6px;border-radius:6px;background:rgba(255,255,255,.25);overflow:hidden}
-.ph-hooked i{display:block;height:100%;width:12%;background:#2BD98E;border-radius:6px;transition:width .5s var(--ease)}
-.tl.s1 .ph-hooked i{width:40%}.tl.s2 .ph-hooked i{width:72%}.tl.s3 .ph-hooked i{width:100%}
-.ph-hook{position:absolute;left:10%;right:10%;top:17%;text-align:center;font:800 clamp(19px,1.9vw,24px)/1.05 var(--f-display);color:#16141C;background:#3DB5FF;box-shadow:0 0 0 3px #16141C;padding:10px 8px;border-radius:12px;transform:scale(.4) rotate(-8deg);opacity:0;transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .2s}
-.tl.s2 .ph-hook{transform:scale(1) rotate(-3deg);opacity:1}
-.ph-sub{position:absolute;left:7%;right:17%;bottom:12%;padding:8px 10px;border-radius:10px;background:rgba(22,20,28,.72);opacity:0;transition:opacity .2s;font:800 14px/1.3 var(--f-body);color:#FFFFFF;text-shadow:0 2px 0 #16141C,0 0 6px rgba(0,0,0,.5)}
-.tl.started .ph-sub{opacity:1}
-.ph-sub span{opacity:.0;transition:opacity .12s}
-.ph-sub span.on{opacity:1}
-.ph-sub span:nth-child(7).on,.ph-sub span:nth-child(8).on{color:#FFC21A}
-.ph-icons{position:absolute;right:9px;bottom:16%;display:grid;gap:12px}
-.ph-icons i{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.85)}
-.ph-swipe{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;font:700 10px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8);transition:opacity .4s}
-.ph-swipe svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1s ease-in-out infinite}
-@keyframes nudge{50%{transform:translateY(-5px)}}
-.tl.s2 .ph-swipe{opacity:0}
-.ph-flash{position:absolute;inset:0;background:#FFFFFF;opacity:0;pointer-events:none}
+.ph-screen{position:relative;width:100%;height:100%;border-radius:41px;overflow:hidden;background:#111;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;color:#FFFFFF}
+.ph-screen svg{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ph-scene{position:absolute;inset:0;transition:transform .1s steps(1)}
+.ph-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#E9C9CF}
+.ph-scene[data-cut="0"]{transform:scale(1.25) translate(2%,8%)}
+.ph-scene[data-cut="1"]{transform:scale(1.08) translate(-3%,2%)}
+.ph-scene[data-cut="2"]{transform:scale(1.38) translate(0,12%)}
+.ph-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,0) 18%,rgba(0,0,0,0) 58%,rgba(0,0,0,.55) 86%);pointer-events:none}
+.ph-status{position:absolute;left:0;right:0;top:0;height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 22px 0 26px;font-size:12.5px;z-index:3}
+.ph-status b{font-weight:600;letter-spacing:.01em}
+.ph-island{position:absolute;left:50%;top:8px;width:31%;height:22px;margin-left:-15.5%;border-radius:14px;background:#000}
+.ph-sys{display:flex;align-items:center;gap:4px}
+.ph-sys svg{width:15px;height:10px;fill:#FFFFFF;stroke:none}
+.ph-bat{position:relative;display:block;width:21px;height:10px;border:1.3px solid rgba(255,255,255,.55);border-radius:3px;padding:1px}
+.ph-bat::after{content:"";position:absolute;right:-3.5px;top:2.5px;width:1.6px;height:3.5px;border-radius:0 1px 1px 0;background:rgba(255,255,255,.55)}
+.ph-bat i{display:block;height:100%;width:78%;background:#FFFFFF;border-radius:1px}
+.ph-top{position:absolute;left:14px;right:14px;top:40px;display:flex;align-items:center;justify-content:space-between;z-index:2}
+.ph-top b{display:flex;align-items:center;gap:5px;font-size:19px;font-weight:700;letter-spacing:-.01em}
+.ph-top b svg{width:10px;height:8px;stroke-width:2.2}
+.ph-cam{width:24px;height:24px}
+.ph-hook{position:absolute;left:12%;right:12%;top:21%;text-align:center;font:800 clamp(17px,1.7vw,21px)/1.12 var(--f-display);color:#16141C;background:#3DB5FF;padding:9px 8px;border-radius:10px;transform:scale(.4) rotate(-8deg);opacity:0;transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .2s;z-index:2}
+.tl.s2 .ph-hook{transform:scale(1) rotate(-2deg);opacity:1}
+.ph-sub{position:absolute;left:9%;right:20%;top:52%;text-align:center;font:800 15.5px/1.25 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;color:#FFFFFF;-webkit-text-stroke:3.5px #000;paint-order:stroke fill;z-index:2}
+.ph-sub span{display:inline-block;opacity:0;transform:scale(.7);transition:opacity .1s,transform .18s cubic-bezier(.34,1.56,.64,1)}
+.ph-sub span.on{opacity:1;transform:none}
+.ph-sub span:nth-child(7),.ph-sub span:nth-child(8){color:#FFC21A}
+.ph-rail{position:absolute;right:8px;bottom:84px;display:flex;flex-direction:column;align-items:center;gap:13px;z-index:2}
+.ph-rail span{display:flex;flex-direction:column;align-items:center;gap:3px}
+.ph-rail svg{width:25px;height:25px}
+.ph-rail em{font-style:normal;font-size:10.5px;font-weight:600}
+.ph-like svg{transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.tl.liked .ph-like svg{fill:#FF3040;stroke:#FF3040;transform:scale(1.12)}
+.ph-audio{display:block;width:24px;height:24px;border-radius:6px;border:2px solid #FFFFFF;background:linear-gradient(135deg,#FFC21A,#FF6FA8 55%,#5A31F4)}
+.ph-meta{position:absolute;left:12px;right:52px;bottom:76px;z-index:2;font-size:11.5px;line-height:1.35}
+.ph-user{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.ph-av{display:block;width:27px;height:27px;border-radius:50%;background:linear-gradient(135deg,#FFC21A,#FF6FA8 50%,#5A31F4);box-shadow:0 0 0 1.5px #FFFFFF}
+.ph-user b{font-size:12.5px;font-weight:700}
+.ph-user span{font-size:11px;font-weight:600;padding:3px 9px;border:1px solid rgba(255,255,255,.8);border-radius:7px}
+.ph-meta p{margin:0 0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph-meta p span{opacity:.75}
+.ph-song{display:flex;align-items:center;gap:5px;font-size:11px}
+.ph-song svg{width:11px;height:11px;flex:0 0 auto}
+.ph-big-heart{position:absolute;left:50%;top:40%;width:84px;height:84px;margin:-42px 0 0 -42px;opacity:0;transform:scale(.3);z-index:3;pointer-events:none}
+.ph-big-heart svg{width:100%;height:100%;fill:#FFFFFF;stroke:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+.tl.liked.playing .ph-big-heart,.tl.liked .ph-big-heart{animation:bigheart .9s ease-out forwards}
+@keyframes bigheart{0%{opacity:0;transform:scale(.3) rotate(-12deg)}25%{opacity:1;transform:scale(1.15) rotate(-6deg)}45%{transform:scale(.95) rotate(-8deg)}75%{opacity:1;transform:scale(1) rotate(-8deg)}100%{opacity:0;transform:scale(1.1) translateY(-30px) rotate(-8deg)}}
+.ph-prog{position:absolute;left:0;right:0;bottom:62px;height:2px;background:rgba(255,255,255,.3);z-index:2}
+.ph-prog span{display:block;height:100%;width:calc(var(--p,0) * 100%);background:#FFFFFF}
+.ph-nav{position:absolute;left:0;right:0;bottom:0;height:62px;padding:0 18px 14px;background:#000;display:flex;align-items:center;justify-content:space-between;z-index:2}
+.ph-nav svg{width:23px;height:23px}
+.ph-nav svg.on .f{fill:#FFFFFF;stroke:none}
+.ph-me{display:block;width:23px;height:23px;border-radius:50%;background:linear-gradient(135deg,#FFC21A,#FF6FA8 50%,#5A31F4)}
+.ph-home{position:absolute;left:50%;bottom:6px;width:34%;height:4px;margin-left:-17%;border-radius:3px;background:#FFFFFF;z-index:3}
+.ph-flash{position:absolute;inset:0;background:#FFFFFF;opacity:0;pointer-events:none;z-index:4}
 .ph-flash.go{animation:flash .16s ease-out}
-@keyframes flash{0%{opacity:.75}100%{opacity:0}}
+@keyframes flash{0%{opacity:.6}100%{opacity:0}}
 /* the scrubber */
 .tl-bar{display:flex;align-items:center;gap:16px;margin-bottom:26px}
 .tl-play{flex:0 0 auto;width:54px;height:54px;border-radius:50%;border:0;background:#FFFFFF;color:#16141C;display:grid;place-items:center;cursor:pointer;box-shadow:0 0 0 2.5px #16141C,4px 4px 0 #16141C;transition:transform .2s var(--ease)}
@@ -650,7 +671,7 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 .secs h3{font:800 clamp(22px,2.1vw,27px)/1.1 var(--f-display);font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144;margin:0 0 6px}
 .secs p{margin:0;font-size:16px;line-height:1.45}
 @media (max-width:820px){.secs li.now{transform:translateX(4px) rotate(-.6deg)}.sec-btn{padding:18px}}
-@media (prefers-reduced-motion: reduce){.ph,.secs li,.ph-hook{transition:none}.ph-swipe svg,.tl.s1 .ph-head b{animation:none}}
+@media (prefers-reduced-motion: reduce){.ph,.secs li,.ph-hook,.ph-sub span{transition:none}.ph-big-heart{animation:none!important}}
 .why-note{margin:clamp(36px,5vw,56px) 0 0;max-width:62ch;font-size:clamp(17px,1.5vw,19.5px);line-height:1.6;color:var(--band-ink)}
 
 /* two ways */
@@ -834,13 +855,29 @@ button.play.inline{position:static;transform:none;cursor:pointer}
     <div class="tl" id="tl">
       <div class="ph" aria-hidden="true">
         <div class="ph-screen">
-          <div class="ph-scene"><div class="ph-bg"></div><div class="ph-body"></div><div class="ph-head"><i></i><i></i><b></b></div></div>
-          <div class="ph-bar"><span></span></div>
-          <div class="ph-hooked"><span>Hooked</span><em><i></i></em></div>
+          <div class="ph-scene"><video class="ph-vid" muted playsinline preload="none" src="https://videos.pexels.com/video-files/6962123/6962123-sd_506_960_25fps.mp4"></video></div>
+          <div class="ph-shade"></div>
+          <div class="ph-status"><b>9:41</b><span class="ph-island"></span><span class="ph-sys"><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5l2.4-2.9a3.6 3.6 0 0 0-4.8 0zM3.5 6.4l1.5 1.8a4.7 4.7 0 0 1 6 0l1.5-1.8a7 7 0 0 0-9 0zM.8 3.2l1.5 1.8a8.9 8.9 0 0 1 11.4 0l1.5-1.8a11.2 11.2 0 0 0-14.4 0z"/></svg><i class="ph-bat"><i></i></i></span></div>
+          <div class="ph-top"><b>Reels <svg viewBox="0 0 12 8"><path d="M1 1.5l5 5 5-5"/></svg></b><svg class="ph-cam" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="14" rx="4"/><circle cx="12" cy="13" r="3.8"/><path d="M8.5 6l1.4-2.4h4.2L15.5 6"/></svg></div>
           <div class="ph-hook">The 1-second rule</div>
           <div class="ph-sub"><span>Most</span> <span>founders</span> <span>lose</span> <span>people</span> <span>in</span> <span>the</span> <span>first</span> <span>second.</span></div>
-          <div class="ph-icons"><i></i><i></i><i></i></div>
-          <div class="ph-swipe"><svg viewBox="0 0 24 24"><path d="M12 19V6M7 10l5-5 5 5"/></svg>swipe</div>
+          <div class="ph-big-heart"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 5.3 3.1 1.7-1.9 3.1-3.1 5.3-3.1 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+          <div class="ph-rail">
+            <span class="ph-like"><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.3-4.5-9.3-8.9C1.3 8.3 3.3 4.8 6.8 4.8c2.1 0 3.5 1.1 5.2 3 1.7-1.9 3.1-3 5.2-3 3.5 0 5.5 3.5 4.1 6.8-2 4.4-9.3 8.9-9.3 8.9z"/></svg><em class="ph-likes">48.2K</em></span>
+            <span><svg viewBox="0 0 24 24"><path d="M20.6 11.4a8.6 8.6 0 1 1-3.4-6.9 8.6 8.6 0 0 1 3.4 6.9zM20.6 20.6l-2.3-4.6"/></svg><em>1,204</em></span>
+            <span><svg viewBox="0 0 24 24"><path d="M4 11V8.5A2.5 2.5 0 0 1 6.5 6H19m0 0l-3-3m3 3l-3 3M20 13v2.5a2.5 2.5 0 0 1-2.5 2.5H5m0 0l3-3m-3 3l3 3"/></svg><em>862</em></span>
+            <span><svg viewBox="0 0 24 24"><path d="M21.5 3.5L10.2 13.4M21.5 3.5l-6.9 17-4.4-7.1-7.7-3.6z"/></svg><em>3,317</em></span>
+            <span><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></span>
+            <i class="ph-audio"></i>
+          </div>
+          <div class="ph-meta">
+            <div class="ph-user"><i class="ph-av"></i><b>yourbrand</b><span>Follow</span></div>
+            <p>The first second decides everything. Here's how to win it <span>... more</span></p>
+            <p class="ph-song"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>yourbrand · Original audio</p>
+          </div>
+          <div class="ph-prog"><span></span></div>
+          <div class="ph-nav"><svg viewBox="0 0 24 24"><path d="M3.5 10.5L12 3l8.5 7.5V20a1 1 0 0 1-1 1H15v-6h-6v6H4.5a1 1 0 0 1-1-1z"/></svg><svg class="on" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l3 5.5M14 3l3 5.5"/><path class="f" d="M10 12v5.5l4.8-2.75z"/></svg><svg viewBox="0 0 24 24"><path d="M21.5 3.5L10.2 13.4M21.5 3.5l-6.9 17-4.4-7.1-7.7-3.6z"/></svg><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><i class="ph-me"></i></div>
+          <div class="ph-home"></div>
           <div class="ph-flash"></div>
         </div>
       </div>
@@ -872,7 +909,8 @@ button.play.inline{position:static;transform:none;cursor:pointer}
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const range = root.querySelector('.tl-range'), play = root.querySelector('.tl-play'), timeEl = root.querySelector('.tl-time');
   const words = [...root.querySelectorAll('.ph-sub span')], cards = [...root.querySelectorAll('.secs li')];
-  const scene = root.querySelector('.ph-scene'), flash = root.querySelector('.ph-flash');
+  const scene = root.querySelector('.ph-scene'), flash = root.querySelector('.ph-flash'), vid = root.querySelector('.ph-vid');
+  const seek = ms => { try { vid.currentTime = Math.min(ms, D) / 1000; } catch (e) {} };
   let t = 0, playing = false, last = 0, lastCut = -1, done = false;
   function render(){
     root.style.setProperty('--p', (t / D).toFixed(4));
@@ -891,25 +929,26 @@ button.play.inline{position:static;transform:none;cursor:pointer}
     cards.forEach((c, i) => c.classList.toggle('now', i === now && (t > 0 || done)));
     root.classList.toggle('playing', playing);
     root.classList.toggle('ended', t >= D);
+    root.classList.toggle('liked', t >= 3950);
   }
   function tick(ts){
     if (!playing) return;
     t = Math.min(D, t + (ts - last)); last = ts;
-    if (t >= D){ playing = false; done = true; }
+    if (t >= D){ playing = false; done = true; vid.pause(); }
     render();
     if (playing) requestAnimationFrame(tick);
   }
   function start(from){
     if (from != null) t = from; else if (t >= D) t = 0;
     if (reduced){ t = D; done = true; render(); return; }
-    playing = true; done = true; last = performance.now(); requestAnimationFrame(tick);
+    playing = true; done = true; last = performance.now(); seek(t); vid.play().catch(() => {}); requestAnimationFrame(tick);
   }
-  play.addEventListener('click', () => { if (playing){ playing = false; render(); } else start(); });
-  range.addEventListener('input', () => { playing = false; done = true; t = +range.value; render(); });
+  play.addEventListener('click', () => { if (playing){ playing = false; vid.pause(); render(); } else start(); });
+  range.addEventListener('input', () => { playing = false; vid.pause(); done = true; t = +range.value; seek(t); render(); });
   cards.forEach(c => c.querySelector('button').addEventListener('click', () => start(Math.max(1, +c.dataset.t))));
   if (reduced){ t = D; done = true; }
   render();
-  if (!reduced) new IntersectionObserver((es, o) => { if (es[0].isIntersecting){ o.disconnect(); setTimeout(() => start(0), 350); } }, { threshold: .55 }).observe(root);
+  new IntersectionObserver((es, o) => { if (es[0].isIntersecting){ o.disconnect(); vid.preload = 'auto'; vid.load(); if (reduced){ vid.addEventListener('loadeddata', () => seek(D), { once: true }); return; } vid.addEventListener('loadeddata', () => setTimeout(() => start(0), 250), { once: true }); setTimeout(() => { if (!done) start(0); }, 2500); } }, { rootMargin: '0px 0px -30% 0px' }).observe(root);
 })();
     </script>
     <p class="why-note">We build those first seconds for you either way. If you film, your script tells you exactly how to open. If you don't, we write interview questions designed to get answers that open strong, then pick your best moments, put the hook on screen, and cut each one to the pace of a video that already worked.</p>
