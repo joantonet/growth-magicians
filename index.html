@@ -574,13 +574,83 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 @media (prefers-reduced-motion: reduce){.rot-w,.rot-w.out,.rot-w.in{transition:none;transform:none;opacity:1}}
 
 /* why: the first seconds */
-.secs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-@media (max-width:820px){.secs{grid-template-columns:1fr}}
-.secs li{position:relative;background:var(--tint);color:#16141C;border-radius:24px;padding:26px 26px 28px;transition:transform .5s var(--ease)}
-.secs li:hover{transform:translateY(-6px) rotate(-1deg)}
-.sec-time{display:inline-block;font:800 15px/1 var(--f-body);font-variant-numeric:tabular-nums;padding:8px 12px;border-radius:999px;background:#16141C;color:#FFFFFF;margin-bottom:18px}
-.secs h3{font:800 clamp(24px,2.4vw,30px)/1.1 var(--f-display);font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144;margin:0 0 8px}
-.secs p{margin:0;font-size:16.5px;line-height:1.45}
+.tl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+@media (max-width:820px){.tl{grid-template-columns:1fr;justify-items:center}.tl-side{width:100%}}
+/* the phone */
+.ph{width:clamp(220px,22vw,280px);aspect-ratio:9/16;border-radius:34px;padding:9px;background:#16141C;box-shadow:0 0 0 2.5px #16141C,10px 12px 0 #16141C;transform:rotate(-3deg);transition:transform .6s var(--ease)}
+.tl.playing .ph{transform:rotate(0)}
+.ph-screen{position:relative;width:100%;height:100%;border-radius:26px;overflow:hidden;background:#2B2540}
+.ph-scene{position:absolute;inset:0;transition:transform .12s steps(1)}
+.ph-scene[data-cut="0"]{transform:scale(1.22) translate(-4%,6%)}
+.ph-scene[data-cut="1"]{transform:scale(1.06) translate(5%,0)}
+.ph-scene[data-cut="2"]{transform:scale(1.34) translate(2%,10%)}
+.ph-bg{position:absolute;inset:0;background:radial-gradient(120% 70% at 30% 20%,#7A5CFF 0%,#3B2B7A 55%,#241C45 100%)}
+.ph-bg::after{content:"";position:absolute;left:-10%;right:-10%;bottom:0;height:34%;background:#1B1533}
+.ph-body{position:absolute;left:18%;right:18%;bottom:-6%;height:42%;border-radius:48% 48% 0 0;background:#FFC21A;box-shadow:inset 0 0 0 3px #16141C}
+.ph-head{position:absolute;left:50%;top:30%;width:34%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:#F4C9A4;box-shadow:inset 0 0 0 3px #16141C}
+.ph-head::before{content:"";position:absolute;left:-6%;right:-6%;top:-8%;height:46%;border-radius:50% 50% 30% 30%;background:#16141C}
+.ph-head i{position:absolute;top:52%;width:9%;height:9%;border-radius:50%;background:#16141C}
+.ph-head i:first-child{left:32%}.ph-head i:nth-child(2){right:32%}
+.ph-head b{position:absolute;left:38%;right:38%;top:72%;height:7%;border-radius:0 0 10px 10px;background:#16141C;transition:height .2s}
+.tl.s1 .ph-head b{animation:talk .26s steps(2) infinite}
+.tl:not(.playing) .ph-head b{animation:none}
+@keyframes talk{50%{height:13%}}
+.ph-bar{position:absolute;left:12px;right:12px;top:12px;height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden}
+.ph-bar span{display:block;height:100%;width:calc(var(--p,0) * 100%);background:#FFFFFF}
+.ph-hooked{position:absolute;left:12px;top:24px;display:flex;align-items:center;gap:6px;font:800 10.5px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:#FFFFFF;background:rgba(22,20,28,.55);padding:6px 8px;border-radius:999px}
+.ph-hooked em{display:block;width:44px;height:6px;border-radius:6px;background:rgba(255,255,255,.25);overflow:hidden}
+.ph-hooked i{display:block;height:100%;width:12%;background:#2BD98E;border-radius:6px;transition:width .5s var(--ease)}
+.tl.s1 .ph-hooked i{width:40%}.tl.s2 .ph-hooked i{width:72%}.tl.s3 .ph-hooked i{width:100%}
+.ph-hook{position:absolute;left:10%;right:10%;top:17%;text-align:center;font:800 clamp(19px,1.9vw,24px)/1.05 var(--f-display);color:#16141C;background:#3DB5FF;box-shadow:0 0 0 3px #16141C;padding:10px 8px;border-radius:12px;transform:scale(.4) rotate(-8deg);opacity:0;transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .2s}
+.tl.s2 .ph-hook{transform:scale(1) rotate(-3deg);opacity:1}
+.ph-sub{position:absolute;left:7%;right:17%;bottom:12%;padding:8px 10px;border-radius:10px;background:rgba(22,20,28,.72);opacity:0;transition:opacity .2s;font:800 14px/1.3 var(--f-body);color:#FFFFFF;text-shadow:0 2px 0 #16141C,0 0 6px rgba(0,0,0,.5)}
+.tl.started .ph-sub{opacity:1}
+.ph-sub span{opacity:.0;transition:opacity .12s}
+.ph-sub span.on{opacity:1}
+.ph-sub span:nth-child(7).on,.ph-sub span:nth-child(8).on{color:#FFC21A}
+.ph-icons{position:absolute;right:9px;bottom:16%;display:grid;gap:12px}
+.ph-icons i{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.85)}
+.ph-swipe{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;font:700 10px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8);transition:opacity .4s}
+.ph-swipe svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(-5px)}}
+.tl.s2 .ph-swipe{opacity:0}
+.ph-flash{position:absolute;inset:0;background:#FFFFFF;opacity:0;pointer-events:none}
+.ph-flash.go{animation:flash .16s ease-out}
+@keyframes flash{0%{opacity:.75}100%{opacity:0}}
+/* the scrubber */
+.tl-bar{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+.tl-play{flex:0 0 auto;width:54px;height:54px;border-radius:50%;border:0;background:#FFFFFF;color:#16141C;display:grid;place-items:center;cursor:pointer;box-shadow:0 0 0 2.5px #16141C,4px 4px 0 #16141C;transition:transform .2s var(--ease)}
+.tl-play:hover{transform:translate(-1px,-1px)}
+.tl-play:active{transform:translate(2px,2px);box-shadow:0 0 0 2.5px #16141C,1px 1px 0 #16141C}
+.tl-play svg{width:22px;height:22px;fill:currentColor;display:none}
+.tl-play .i-replay{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.tl:not(.playing):not(.ended) .i-play,.tl.playing .i-pause,.tl.ended:not(.playing) .i-replay{display:block}
+.tl-track{position:relative;flex:1;height:54px}
+.tl-rail{position:absolute;left:0;right:0;top:50%;height:10px;margin-top:-5px;border-radius:10px;background:rgba(255,255,255,.22)}
+.tl-fill{height:100%;width:calc(var(--p,0) * 100%);border-radius:10px;background:#FFFFFF}
+.tl-mark{position:absolute;left:calc(var(--at) * 100%);top:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:var(--c);box-shadow:0 0 0 2.5px #16141C;font-size:0;z-index:1}
+.tl-mark:first-of-type{transform:translate(0,-50%)}
+.tl-mark::after{content:attr(data-l);}
+.tl-cut{position:absolute;left:calc(var(--at) * 100%);top:50%;width:3px;height:22px;margin:-11px 0 0 -1.5px;background:#FF6FA8;border-radius:3px;opacity:.0;transition:opacity .2s}
+.tl.s3 .tl-cut{opacity:1}
+.tl-head{position:absolute;left:calc(var(--p,0) * 100%);top:50%;width:6px;height:40px;margin:-20px 0 0 -3px;background:#FFFFFF;border-radius:6px;box-shadow:0 0 0 2.5px #16141C;z-index:2;pointer-events:none}
+.tl-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:3}
+.tl-range:focus-visible~.tl-head,.tl-range:focus-visible{outline:none}
+.tl-track:has(.tl-range:focus-visible) .tl-head{box-shadow:0 0 0 2.5px #16141C,0 0 0 6px #FFC21A}
+.tl-time{flex:0 0 auto;font:800 15px/1 var(--f-body);font-variant-numeric:tabular-nums;color:#16141C;background:#FFFFFF;padding:8px 11px;border-radius:999px}
+/* the three moments */
+.secs{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.secs li{position:relative;opacity:.5;transform:scale(.97);transform-origin:left center;transition:opacity .35s,transform .45s var(--ease)}
+.secs li.on{opacity:1;transform:none}
+.secs li.now{transform:translateX(10px) rotate(-1deg)}
+.sec-btn{all:unset;box-sizing:border-box;width:100%;display:flex;gap:18px;align-items:flex-start;background:var(--tint);color:#16141C;border-radius:22px;padding:20px 22px;cursor:pointer;box-shadow:0 0 0 2.5px transparent;transition:box-shadow .3s}
+.secs li.now .sec-btn{box-shadow:0 0 0 2.5px #16141C,6px 6px 0 #16141C}
+.sec-btn:focus-visible{box-shadow:0 0 0 3px #FFFFFF,0 0 0 6px #16141C}
+.sec-time{flex:0 0 auto;display:inline-block;font:800 15px/1 var(--f-body);font-variant-numeric:tabular-nums;padding:8px 12px;border-radius:999px;background:#16141C;color:#FFFFFF;margin-top:2px}
+.secs h3{font:800 clamp(22px,2.1vw,27px)/1.1 var(--f-display);font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144;margin:0 0 6px}
+.secs p{margin:0;font-size:16px;line-height:1.45}
+@media (max-width:820px){.secs li.now{transform:translateX(4px) rotate(-.6deg)}.sec-btn{padding:18px}}
+@media (prefers-reduced-motion: reduce){.ph,.secs li,.ph-hook{transition:none}.ph-swipe svg,.tl.s1 .ph-head b{animation:none}}
 .why-note{margin:clamp(36px,5vw,56px) 0 0;max-width:62ch;font-size:clamp(17px,1.5vw,19.5px);line-height:1.6;color:var(--band-ink)}
 
 /* two ways */
@@ -613,10 +683,11 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 /* audit */
 .finds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 @media (max-width:820px){.finds{grid-template-columns:1fr}}
-.find{position:relative;border:2.5px solid var(--ink);border-radius:24px;padding:26px 26px 28px;background:var(--paper);transition:transform .5s var(--ease), background .3s}
+.find{position:relative;display:flex;align-items:center;gap:16px;border:2.5px solid var(--ink);border-radius:24px;padding:22px 24px;background:var(--paper);transition:transform .5s var(--ease), background .3s}
 .find:hover{transform:translateY(-6px);background:var(--tint);color:#16141C;border-color:#16141C}
 .find-n{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--tint);border:2.5px solid #16141C;color:#16141C;font:800 20px/1 var(--f-display);margin-bottom:16px}
-.find h3{font-size:22px}
+.find h3{font-size:21px;margin:0}
+.find .find-n{flex:0 0 auto;margin:0}
 .find p{margin:0;font-size:16.5px;line-height:1.5}
 .find:hover p{color:#16141C}
 .finding{margin-top:28px;border-radius:24px;background:var(--paper-2);padding:26px clamp(20px,3vw,34px)}
@@ -760,23 +831,87 @@ button.play.inline{position:static;transform:none;cursor:pointer}
       </div>
       <p>Two founders can say the same thing and get completely different results. The difference is usually in the first few seconds: the first line, the words on screen, and how fast the video moves.</p>
     </div>
-    <ol class="secs" aria-label="The first few seconds">
-      <li style="--tint:#FFC21A">
-        <span class="sec-time">0:00</span>
-        <h3>The first line</h3>
-        <p>What you say before anyone decides to keep watching.</p>
-      </li>
-      <li style="--tint:#3DB5FF">
-        <span class="sec-time">0:01</span>
-        <h3>The words on screen</h3>
-        <p>Most people watch with the sound off, so the hook has to be readable.</p>
-      </li>
-      <li style="--tint:#FF6FA8">
-        <span class="sec-time">0:03</span>
-        <h3>How fast it moves</h3>
-        <p>The pace that keeps people watching to the end.</p>
-      </li>
-    </ol>
+    <div class="tl" id="tl">
+      <div class="ph" aria-hidden="true">
+        <div class="ph-screen">
+          <div class="ph-scene"><div class="ph-bg"></div><div class="ph-body"></div><div class="ph-head"><i></i><i></i><b></b></div></div>
+          <div class="ph-bar"><span></span></div>
+          <div class="ph-hooked"><span>Hooked</span><em><i></i></em></div>
+          <div class="ph-hook">The 1-second rule</div>
+          <div class="ph-sub"><span>Most</span> <span>founders</span> <span>lose</span> <span>people</span> <span>in</span> <span>the</span> <span>first</span> <span>second.</span></div>
+          <div class="ph-icons"><i></i><i></i><i></i></div>
+          <div class="ph-swipe"><svg viewBox="0 0 24 24"><path d="M12 19V6M7 10l5-5 5 5"/></svg>swipe</div>
+          <div class="ph-flash"></div>
+        </div>
+      </div>
+      <div class="tl-side">
+        <div class="tl-bar">
+          <button class="tl-play" type="button" aria-label="Play the first seconds"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h4v16H7zM13 4h4v16h-4z"/></svg><svg class="i-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg></button>
+          <div class="tl-track">
+            <div class="tl-rail"><div class="tl-fill"></div></div>
+            <span class="tl-mark" style="--at:0;--c:#FFC21A">0:00</span>
+            <span class="tl-mark" style="--at:.2222;--c:#3DB5FF">0:01</span>
+            <span class="tl-mark" style="--at:.6667;--c:#FF6FA8">0:03</span>
+            <span class="tl-cut" style="--at:.6667"></span><span class="tl-cut" style="--at:.7556"></span><span class="tl-cut" style="--at:.8444"></span>
+            <div class="tl-head"></div>
+            <input class="tl-range" type="range" min="0" max="4500" step="10" value="0" aria-label="Scrub through the first seconds of a video">
+          </div>
+          <span class="tl-time" aria-hidden="true">0:00</span>
+        </div>
+        <ol class="secs" aria-label="The first few seconds">
+          <li style="--tint:#FFC21A" data-t="0"><button type="button" class="sec-btn"><span class="sec-time">0:00</span><span class="sec-txt"><h3>The first line</h3><p>What you say before anyone decides to keep watching.</p></span></button></li>
+          <li style="--tint:#3DB5FF" data-t="1000"><button type="button" class="sec-btn"><span class="sec-time">0:01</span><span class="sec-txt"><h3>The words on screen</h3><p>Most people watch with the sound off, so the hook has to be readable.</p></span></button></li>
+          <li style="--tint:#FF6FA8" data-t="3000"><button type="button" class="sec-btn"><span class="sec-time">0:03</span><span class="sec-txt"><h3>How fast it moves</h3><p>The pace that keeps people watching to the end.</p></span></button></li>
+        </ol>
+      </div>
+    </div>
+    <script>
+(() => {
+  const root = document.getElementById('tl'); if (!root) return;
+  const D = 4500, cuts = [3000, 3400, 3800];
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const range = root.querySelector('.tl-range'), play = root.querySelector('.tl-play'), timeEl = root.querySelector('.tl-time');
+  const words = [...root.querySelectorAll('.ph-sub span')], cards = [...root.querySelectorAll('.secs li')];
+  const scene = root.querySelector('.ph-scene'), flash = root.querySelector('.ph-flash');
+  let t = 0, playing = false, last = 0, lastCut = -1, done = false;
+  function render(){
+    root.style.setProperty('--p', (t / D).toFixed(4));
+    range.value = Math.round(t);
+    timeEl.textContent = '0:0' + Math.min(4, Math.floor(t / 1000));
+    words.forEach((w, i) => w.classList.toggle('on', t >= 80 + i * 110));
+    root.classList.toggle('s1', t >= 0 && (t > 0 || done));
+    root.classList.toggle('s2', t >= 1000);
+    root.classList.toggle('s3', t >= 3000);
+    root.classList.toggle('started', t > 0 || done);
+    let cut = -1; cuts.forEach((c, i) => { if (t >= c) cut = i; });
+    scene.dataset.cut = cut;
+    if (cut !== lastCut && cut >= 0 && playing && !reduced){ flash.classList.remove('go'); void flash.offsetWidth; flash.classList.add('go'); }
+    lastCut = cut;
+    let now = -1; cards.forEach((c, i) => { const at = +c.dataset.t; c.classList.toggle('on', t >= at && (t > 0 || done)); if (t >= at) now = i; });
+    cards.forEach((c, i) => c.classList.toggle('now', i === now && (t > 0 || done)));
+    root.classList.toggle('playing', playing);
+    root.classList.toggle('ended', t >= D);
+  }
+  function tick(ts){
+    if (!playing) return;
+    t = Math.min(D, t + (ts - last)); last = ts;
+    if (t >= D){ playing = false; done = true; }
+    render();
+    if (playing) requestAnimationFrame(tick);
+  }
+  function start(from){
+    if (from != null) t = from; else if (t >= D) t = 0;
+    if (reduced){ t = D; done = true; render(); return; }
+    playing = true; done = true; last = performance.now(); requestAnimationFrame(tick);
+  }
+  play.addEventListener('click', () => { if (playing){ playing = false; render(); } else start(); });
+  range.addEventListener('input', () => { playing = false; done = true; t = +range.value; render(); });
+  cards.forEach(c => c.querySelector('button').addEventListener('click', () => start(Math.max(1, +c.dataset.t))));
+  if (reduced){ t = D; done = true; }
+  render();
+  if (!reduced) new IntersectionObserver((es, o) => { if (es[0].isIntersecting){ o.disconnect(); setTimeout(() => start(0), 350); } }, { threshold: .55 }).observe(root);
+})();
+    </script>
     <p class="why-note">We build those first seconds for you either way. If you film, your script tells you exactly how to open. If you don't, we write interview questions designed to get answers that open strong, then pick your best moments, put the hook on screen, and cut each one to the pace of a video that already worked.</p>
   </div>
   </section>
@@ -829,35 +964,13 @@ button.play.inline{position:static;transform:none;cursor:pointer}
       <div>
         <h2>What the audit finds.</h2>
       </div>
-      <p>Every client starts with a full audit of their public content and their competitors'. It answers three questions.</p>
+      <p>Every client starts with an audit of their content and their competitors'. It answers three questions.</p>
     </div>
     <div class="finds">
-      <article class="find" style="--tint:#2BD98E">
-        <span class="find-n">1</span>
-        <h3>What's growing you already.</h3>
-        <p>Your best videos, and what they have in common.</p>
-      </article>
-      <article class="find" style="--tint:#FF6FA8">
-        <span class="find-n">2</span>
-        <h3>What's holding you back.</h3>
-        <p>Usually the problem is in the opening seconds.</p>
-      </article>
-      <article class="find" style="--tint:#FFC21A">
-        <span class="find-n">3</span>
-        <h3>What you haven't tried.</h3>
-        <p>Video styles growing other accounts in your market that you've never used. These often turn out to be your best videos.</p>
-      </article>
+      <article class="find" style="--tint:#2BD98E"><span class="find-n">1</span><h3>What's growing you already?</h3></article>
+      <article class="find" style="--tint:#FF6FA8"><span class="find-n">2</span><h3>What's holding you back?</h3></article>
+      <article class="find" style="--tint:#FFC21A"><span class="find-n">3</span><h3>What haven't you tried yet?</h3></article>
     </div>
-    <div class="finding">
-      <p class="finding-lead">Every finding comes in the same four parts. If we can't see something, we say so instead of guessing.</p>
-      <ol class="finding-parts">
-        <li>What we saw</li>
-        <li>What it means</li>
-        <li>How sure we are</li>
-        <li>What to do about it</li>
-      </ol>
-    </div>
-    <p class="public-note"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="5" y="11" width="16" height="11" rx="2.5"/><path d="M8.5 11V8.5a4.5 4.5 0 0 1 9 0V11"/></svg>We only use what's public. You won't be asked for logins or analytics access.</p>
   </section>
 
   <section class="block band" id="bank">
