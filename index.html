@@ -1655,7 +1655,7 @@ class Stage {
   resize(){
     const W = this.el.clientWidth, H = this.el.clientHeight; if (!W || !H) return;
     // never more than ~1.4 million pixels per crowd, and step down further if the device can't keep up
-    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1, Math.sqrt(1.4e6 / (W * H))) * QUAL);
+    const dpr = Math.max(1, Math.min(1.5, window.devicePixelRatio || 1, Math.sqrt(9e5 / (W * H))) * QUAL);
     if (this.canvas.width !== Math.round(W * dpr) || this.canvas.height !== Math.round(H * dpr)){ this.canvas.width = Math.round(W * dpr); this.canvas.height = Math.round(H * dpr); }
     this.dpr = dpr;
     const rebuild = Math.abs(W - this.builtW) > 40 || Math.abs(H - this.H) > 30;
@@ -2251,7 +2251,7 @@ teamEl.querySelectorAll('.mate').forEach((el, i) => {
   const p = makePerson(rng(TEAM[i].seed), 0, 0, 1, 1, 0);
   p.mode = 'star'; p.colorAmt = 1; p.hatAmt = 0; p.acc = null;
   const m = { el, c, ctx, p, W: 0, H: 0, d: 1, visible: false, want: 0, off: i * 1.7 };
-  const size = () => { m.d = Math.min(2, devicePixelRatio || 1); m.W = c.clientWidth; m.H = c.clientHeight; m.foot = el.querySelector('.mate-txt').offsetHeight; c.width = Math.round(m.W * m.d); c.height = Math.round(m.H * m.d); };
+  const size = () => { m.d = Math.min(1.5, devicePixelRatio || 1); m.W = c.clientWidth; m.H = c.clientHeight; m.foot = el.querySelector('.mate-txt').offsetHeight; c.width = Math.round(m.W * m.d); c.height = Math.round(m.H * m.d); };
   new ResizeObserver(size).observe(c);
   new IntersectionObserver(es => { m.visible = es[0].isIntersecting; if (touchy) m.want = m.visible ? 1 : 0; }, { threshold: .5 }).observe(el);
   el.addEventListener('pointerenter', () => { m.want = 1; });
@@ -2290,7 +2290,7 @@ document.querySelectorAll('.edge').forEach(el => {
   const c = el.querySelector('canvas'), ctx = c.getContext('2d');
   const top = el.classList.contains('top');
   const sc = { el, W: 0, H: 0, d: 1, last: '', visible: true, seed: 400 + scribbles.length * 97, host: el.closest('.band'), ver: -1, fill: '' };
-  const size = () => { sc.d = Math.min(2, devicePixelRatio || 1); sc.W = el.clientWidth; sc.H = el.clientHeight; c.width = Math.round(sc.W * sc.d); c.height = Math.round(sc.H * sc.d); sc.last = ''; };
+  const size = () => { sc.d = Math.min(1.5, devicePixelRatio || 1); sc.W = el.clientWidth; sc.H = el.clientHeight; c.width = Math.round(sc.W * sc.d); c.height = Math.round(sc.H * sc.d); sc.last = ''; };
   new ResizeObserver(size).observe(el);
   new IntersectionObserver(es => { sc.visible = es[0].isIntersecting; }).observe(el);
   sc.draw = () => {
@@ -2318,8 +2318,8 @@ function frame(t){
   const dt = Math.min(.05, (t - last) / 1000); last = t;
   const now = t / 1000;
   boil = reduced ? 0 : Math.floor(now * 8) % 3;
-  // people move every frame, but the canvases repaint about 30 times a second (hand-drawn motion doesn't need more)
-  const paint = t - lastPaint >= 29;
+  // people move every frame, but the canvases repaint about 25 times a second (hand-drawn motion doesn't need more)
+  const paint = t - lastPaint >= 40;
   let busy = false;
   for (const s of stages){ if (!s.visible || !s.W) continue; busy = true; s.update(dt, now); if (paint) s.draw(now); }
   if (paint){
