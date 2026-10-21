@@ -22,7 +22,7 @@
 <meta name="theme-color" content="#F3F4EE">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F3F4EE'/%3E%3Cg transform='translate(4 10) rotate(-8 28 22)'%3E%3Cpath fill='%2317193F' d='M14 5Q14 1 30 1Q46 1 46 5L43 34H17Z'/%3E%3Cpath fill='%237655AC' d='M16.3 25H43.7L43 34H17Z'/%3E%3Cpath fill='%2317193F' d='M2 36Q30 30 58 36Q60 42 52 43Q30 38 8 43Q0 42 2 36Z'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://growthmagicians.com/#org","name":"Growth Magicians","url":"https://growthmagicians.com/","logo":"https://growthmagicians.com/icon-512.png","image":"https://growthmagicians.com/og.png","description":"We research and analyze video content and come up with a strategy to create short video content for Instagram, YouTube and TikTok to grow your brand.","slogan":"Short videos that grow founder brands.","areaServed":"Worldwide","knowsAbout":["Short-form video","Instagram Reels","TikTok","YouTube Shorts","Founder-led content","Social media audits"],"potentialAction":{"@type":"ReserveAction","name":"Book a call","target":"https://calendly.com/jo-growthmagicians/discovery-call"}},{"@type":"WebSite","@id":"https://growthmagicians.com/#site","url":"https://growthmagicians.com/","name":"Growth Magicians","publisher":{"@id":"https://growthmagicians.com/#org"},"inLanguage":"en"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://growthmagicians.com/#org","name":"Growth Magicians","url":"https://growthmagicians.com/","logo":"https://growthmagicians.com/icon-512.png","image":"https://growthmagicians.com/og.png","description":"We research and analyze video content and come up with a strategy to create short video content for Instagram, YouTube and TikTok to grow your brand.","slogan":"Short videos that grow founder brands.","areaServed":"Worldwide","priceRange":"$2,500 to $3,500 per month","hasOfferCatalog":{"@type":"OfferCatalog","name":"Plans","itemListElement":[{"@type":"Offer","name":"Month to month","description":"Audit, scripts or a monthly interview, short videos edited, captioned and posted, unlimited revisions and a monthly growth report. No commitment.","priceCurrency":"USD","price":"3500","url":"https://growthmagicians.com/#pricing"},{"@type":"Offer","name":"3-month plan","description":"Everything in month to month, with a 3-month commitment.","priceCurrency":"USD","price":"3000","url":"https://growthmagicians.com/#pricing"},{"@type":"Offer","name":"6-month plan","description":"Everything in month to month, with a 6-month commitment.","priceCurrency":"USD","price":"2500","url":"https://growthmagicians.com/#pricing"}]},"knowsAbout":["Short-form video","Instagram Reels","TikTok","YouTube Shorts","Founder-led content","Social media audits"],"potentialAction":{"@type":"ReserveAction","name":"Book a call","target":"https://calendly.com/jo-growthmagicians/discovery-call"}},{"@type":"WebSite","@id":"https://growthmagicians.com/#site","url":"https://growthmagicians.com/","name":"Growth Magicians","publisher":{"@id":"https://growthmagicians.com/#org"},"inLanguage":"en"}]}</script>
 <style>html,body{margin:0}</style>
 <script>try{var t=localStorage.getItem('gm-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>Grow your brand with short video content</title>
@@ -485,6 +485,7 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 .term-note{font-size:15px;color:var(--ink-2)}
 .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
 @media (max-width:1000px){.plans{grid-template-columns:repeat(2,minmax(0,1fr))}.plan.other{grid-column:1/-1}}
+@media (max-width:1000px){.plans .plan:nth-child(3):last-child{grid-column:1/-1}}
 @media (max-width:640px){.plans{grid-template-columns:1fr}}
 .plan{position:relative;display:flex;flex-direction:column;border-radius:24px;padding:30px 28px 28px;background:var(--paper-2);color:var(--ink);transition:transform .5s var(--ease)}
 .plan:hover{transform:translateY(-6px)}
@@ -798,6 +799,7 @@ button.play.inline{position:static;transform:none;cursor:pointer}
       <a href="#grow" data-nav="grow">How we grow you</a>
       <a href="#get" data-nav="get">What you get</a>
       <a href="#our-work" data-nav="work">Our work</a>
+      <a href="#pricing" data-nav="pricing">Pricing</a>
       <a href="#team" data-nav="team">Team</a>
       <a href="https://calendly.com/jo-growthmagicians/discovery-call" target="_blank" rel="noopener" class="menu-only">Book a call</a>
     </div>
@@ -1068,6 +1070,52 @@ button.play.inline{position:static;transform:none;cursor:pointer}
     </div>
     <div id="workList"></div>
   </section>
+
+  <section class="wrap block" id="pricing">
+    <div class="block-head">
+      <div>
+        <h2>Pricing.</h2>
+      </div>
+      <p>The same service at three lengths. Stay longer and you pay less each month.</p>
+    </div>
+    <p class="term-note price-note">Prices in US dollars, per month.</p>
+    <div class="plans">
+      <article class="plan">
+        <h3 class="plan-name">Month to month</h3>
+        <p class="price"><span class="amt">$3,500</span><span class="per">/ month</span></p>
+        <span class="save quiet">No commitment, stop any month</span>
+        <ul class="incl">
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Your full audit to start</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Scripts and a shooting guide if you film, or a monthly interview if you don't</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Videos edited, captioned and posted to Instagram, TikTok and YouTube Shorts once you approve</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Unlimited revisions</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A growth report every month</span></li>
+        </ul>
+        <a class="btn" href="https://calendly.com/jo-growthmagicians/discovery-call" target="_blank" rel="noopener">Book a call</a>
+      </article>
+      <article class="plan">
+        <h3 class="plan-name">3 months</h3>
+        <p class="price"><span class="amt">$3,000</span><span class="per">/ month</span></p>
+        <span class="save">Save $500 a month</span>
+        <ul class="incl">
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Everything in month to month</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A 3-month commitment</span></li>
+        </ul>
+        <a class="btn" href="https://calendly.com/jo-growthmagicians/discovery-call" target="_blank" rel="noopener">Book a call</a>
+      </article>
+      <article class="plan pro">
+        <h3 class="plan-name">6 months</h3>
+        <p class="price"><span class="amt">$2,500</span><span class="per">/ month</span></p>
+        <span class="save">Save $1,000 a month</span>
+        <ul class="incl">
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Everything in month to month</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A 6-month commitment, the longest run to find what works and make more of it</span></li>
+        </ul>
+        <a class="btn" href="https://calendly.com/jo-growthmagicians/discovery-call" target="_blank" rel="noopener">Book a call</a>
+      </article>
+    </div>
+  </section>
+
   <section class="wrap block" id="compare">
     <div class="block-head">
       <div>
