@@ -22,7 +22,7 @@
 <meta name="theme-color" content="#0B0714">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F3F4EE'/%3E%3Cg transform='translate(4 10) rotate(-8 28 22)'%3E%3Cpath fill='%2317193F' d='M14 5Q14 1 30 1Q46 1 46 5L43 34H17Z'/%3E%3Cpath fill='%237655AC' d='M16.3 25H43.7L43 34H17Z'/%3E%3Cpath fill='%2317193F' d='M2 36Q30 30 58 36Q60 42 52 43Q30 38 8 43Q0 42 2 36Z'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://growthmagicians.com/#org","name":"Growth Magicians","url":"https://growthmagicians.com/","logo":"https://growthmagicians.com/icon-512.png","image":"https://growthmagicians.com/og.png","description":"Short videos for founders, planned from an audit of what already grows accounts in your market. Made from one interview a month and posted to Instagram, TikTok, YouTube Shorts and LinkedIn.","slogan":"Short videos planned from what works.","areaServed":"Worldwide","priceRange":"$2,500 to $3,500 per month","hasOfferCatalog":{"@type":"OfferCatalog","name":"Plans","itemListElement":[{"@type":"Offer","name":"Month to month","description":"Audit, scripts or a monthly interview, short videos edited, captioned and posted, unlimited revisions and a monthly growth report. No commitment.","priceCurrency":"USD","price":"3500","url":"https://growthmagicians.com/#pricing"},{"@type":"Offer","name":"3-month plan","description":"Everything in month to month, with a 3-month commitment.","priceCurrency":"USD","price":"3000","url":"https://growthmagicians.com/#pricing"},{"@type":"Offer","name":"6-month plan","description":"Everything in month to month, with a 6-month commitment.","priceCurrency":"USD","price":"2500","url":"https://growthmagicians.com/#pricing"}]},"knowsAbout":["Short-form video","Instagram Reels","TikTok","YouTube Shorts","LinkedIn video","Founder-led content","Social media audits"],"potentialAction":{"@type":"ReserveAction","name":"Book a call","target":"https://calendly.com/jo-growthmagicians/discovery-call"}},{"@type":"WebSite","@id":"https://growthmagicians.com/#site","url":"https://growthmagicians.com/","name":"Growth Magicians","publisher":{"@id":"https://growthmagicians.com/#org"},"inLanguage":"en"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://growthmagicians.com/#org","name":"Growth Magicians","url":"https://growthmagicians.com/","logo":"https://growthmagicians.com/icon-512.png","image":"https://growthmagicians.com/og.png","description":"Short videos for founders, planned from an audit of what already grows accounts in your market. Made from one interview a month and posted to Instagram, TikTok, YouTube Shorts and LinkedIn.","slogan":"Short videos planned from what works.","areaServed":"Worldwide","priceRange":"$2,500 to $6,000 per month","hasOfferCatalog":{"@type":"OfferCatalog","name":"Plans","itemListElement":[{"@type":"Offer","name":"Starter","description":"12 videos a month from your own filming, posted to Instagram and TikTok, with your audit and a monthly report.","priceCurrency":"USD","price":"2500","url":"https://growthmagicians.com/#pricing"},{"@type":"Offer","name":"Growth","description":"30 videos a month from scripts or one interview, posted to four platforms, unlimited changes, a monthly report and a strategy call every quarter.","priceCurrency":"USD","price":"3000","url":"https://growthmagicians.com/#pricing"},{"@type":"Offer","name":"Signature","description":"Everything in Growth plus two interviews a month, illustrated motion videos, a long-form episode from each interview and a weekly check-in.","priceCurrency":"USD","price":"6000","url":"https://growthmagicians.com/#pricing"}]},"knowsAbout":["Short-form video","Instagram Reels","TikTok","YouTube Shorts","LinkedIn video","Founder-led content","Social media audits"],"potentialAction":{"@type":"ReserveAction","name":"Book a call","target":"https://calendly.com/jo-growthmagicians/discovery-call"}},{"@type":"WebSite","@id":"https://growthmagicians.com/#site","url":"https://growthmagicians.com/","name":"Growth Magicians","publisher":{"@id":"https://growthmagicians.com/#org"},"inLanguage":"en"}]}</script>
 <style>html,body{margin:0}</style>
 <script>try{var t=localStorage.getItem('gm-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>Growth Magicians | Short videos planned from what works</title>
@@ -1114,6 +1114,23 @@ footer{background:radial-gradient(50% 120% at 15% 0%,rgba(124,77,255,.35),transp
 .wordmark .gm-hat .hat-band{fill:#3C1C7E}
 .wordmark .gm-hat .hat-shine{stroke:#FFFFFF;opacity:.45}
 
+/* plans: Growth in the middle is the one to pick */
+.plans{align-items:stretch;gap:18px}
+.plan{padding:32px 28px 28px}
+.plan-for{margin:0 0 18px;font-size:15.5px;color:var(--ink-2);opacity:1;max-width:none}
+.plan .tag{position:absolute;top:-13px;left:28px;background:var(--accent);color:var(--on-accent);font:800 12.5px/1 var(--f-body);padding:8px 12px;border-radius:999px}
+.plan.pro{transform:scale(1.03);z-index:1;box-shadow:0 0 0 1px rgba(205,251,80,.5),0 40px 80px -40px rgba(205,251,80,.35)}
+.plan.pro .plan-for{color:#D9D2EE}
+.plan.sig{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02))}
+.plan .btn{align-self:stretch}
+.plan:not(.pro) .btn{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(245,245,242,.28)}
+.plan:not(.pro) .btn:hover{box-shadow:inset 0 0 0 1px var(--accent)}
+.incl li.off{color:var(--ink-2);opacity:.6}
+.incl li.off svg path{stroke:#8E86A8}
+.incl b{font-weight:800;color:var(--accent)}
+@media (max-width:1000px){.plan.pro{transform:none}}
+@media (max-width:640px){.plan.pro{order:-1}}
+
 /* the wand: a glowing tip and a trail of dust (desktop pointers only) */
 html.wand,html.wand *{cursor:none!important}
 .wand-tip{position:fixed;left:0;top:0;z-index:10000;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;pointer-events:none;background:#F4FFD0;
@@ -1370,10 +1387,10 @@ html.wand,html.wand *{cursor:none!important}
         <span class="eyebrow"><span class="suit">&#9824;</span> Every month</span>
         <h2>What you get every month.</h2>
       </div>
-      <p>Everything below is included.</p>
+      <p>Everything below comes with the Growth plan.</p>
     </div>
     <ul class="gets">
-      <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>30 short vertical videos a month, planned from what's working in your market</span></li>
+      <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Up to 30 short vertical videos a month, planned from what's working in your market</span></li>
       <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Captions on every video, because most people watch with the sound off</span></li>
       <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>The written caption that goes with each post</span></li>
       <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Videos posted to Instagram, TikTok, YouTube Shorts and LinkedIn once you approve</span></li>
@@ -1385,7 +1402,7 @@ html.wand,html.wand *{cursor:none!important}
     <div class="where">
       <div>
         <h3>Where your videos go</h3>
-        <p>Instagram, TikTok, YouTube Shorts and LinkedIn. The same videos go to all four, so you show up wherever your buyers scroll.</p>
+        <p>Instagram, TikTok, YouTube Shorts and LinkedIn. On Growth and Signature the same videos go to all four, so you show up wherever your buyers scroll.</p>
       </div>
       <ul class="where-list">
         <li class="w-ig"><span class="lg lg-ig" aria-hidden="true"></span>Instagram</li>
@@ -1402,41 +1419,55 @@ html.wand,html.wand *{cursor:none!important}
         <span class="eyebrow"><span class="suit red">&#9830;</span> No setup fee</span>
         <h2>Pricing.</h2>
       </div>
-      <p>The same service at three lengths. Stay longer and you pay less each month.</p>
+      <p>Three plans, no setup fee, and you can stop any month. Most founders pick Growth.</p>
     </div>
-    <p class="term-note price-note">Prices in US dollars, per month.</p>
+    <p class="term-note price-note">Prices in US dollars, per month. No contracts.</p>
     <div class="plans">
       <article class="plan">
-        <h3 class="plan-name">Month to month</h3>
-        <p class="price"><span class="amt">$3,500</span><span class="per">/ month</span></p>
-        <span class="save quiet">No commitment, stop any month</span>
+        <h3 class="plan-name">Starter</h3>
+        <p class="plan-for">For founders who film themselves and want to test the waters.</p>
+        <p class="price"><span class="amt">$2,500</span><span class="per">/ month</span></p>
         <ul class="incl">
-          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Your full audit to start, no setup fee</span></li>
-          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>30 videos a month</span></li>
-          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Scripts and a shooting guide if you film, or a monthly interview if you don't</span></li>
-          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Videos edited, captioned and posted to Instagram, TikTok, YouTube Shorts and LinkedIn once you approve</span></li>
-          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Unlimited revisions</span></li>
-          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A growth report every month</span></li>
-        </ul>
-        <a class="btn" href="#book">Book a call</a>
-      </article>
-      <article class="plan">
-        <h3 class="plan-name">3 months</h3>
-        <p class="price"><span class="amt">$3,000</span><span class="per">/ month</span></p>
-        <span class="save">Save $500 a month</span>
-        <ul class="incl">
-          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Everything in month to month</span></li>
-          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A 3-month commitment</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>12 videos a month</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>You film from our scripts and shooting guide</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Posted to Instagram and TikTok</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>2 rounds of changes per video</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Your audit to start</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A monthly report</span></li>
+          <li class="off"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M7 7l12 12M19 7L7 19"/></svg><span>No interview</span></li>
+          <li class="off"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M7 7l12 12M19 7L7 19"/></svg><span>No YouTube Shorts or LinkedIn</span></li>
+          <li class="off"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M7 7l12 12M19 7L7 19"/></svg><span>No strategy calls</span></li>
         </ul>
         <a class="btn" href="#book">Book a call</a>
       </article>
       <article class="plan pro">
-        <h3 class="plan-name">6 months</h3>
-        <p class="price"><span class="amt">$2,500</span><span class="per">/ month</span></p>
-        <span class="save">Save $1,000 a month</span>
+        <span class="tag">Most popular</span>
+        <h3 class="plan-name">Growth</h3>
+        <p class="plan-for">For founders who want to show up everywhere, every week.</p>
+        <p class="price"><span class="amt">$3,000</span><span class="per">/ month</span></p>
         <ul class="incl">
-          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Everything in month to month</span></li>
-          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A 6-month commitment, the longest run to find what works and make more of it</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span><b>30 videos a month</b></span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Scripts, or one interview a month and we do the rest</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Posted to Instagram, TikTok, YouTube Shorts and LinkedIn</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Unlimited changes</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Your audit to start</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A monthly report, with the videos worth boosting</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A strategy call every quarter</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Your reference bank refreshed every quarter</span></li>
+        </ul>
+        <a class="btn" href="#book">Book a call</a>
+      </article>
+      <article class="plan sig">
+        <h3 class="plan-name">Signature</h3>
+        <p class="plan-for">For founders who want the full studio behind them.</p>
+        <p class="price"><span class="amt">$6,000</span><span class="per">/ month</span></p>
+        <ul class="incl">
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Everything in Growth</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>Two interviews a month</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>4 illustrated motion videos a month</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A long-form episode cut from each interview</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>A weekly check-in</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>48-hour turnaround</span></li>
         </ul>
         <a class="btn" href="#book">Book a call</a>
       </article>
@@ -1496,7 +1527,7 @@ html.wand,html.wand *{cursor:none!important}
       <p>If yours isn't here, ask us on a call.</p>
     </div>
     <div class="faq">
-      <details><summary>Can you guarantee growth?</summary><p>Anyone who guarantees views is guessing. We guarantee the work: 30 videos a month, each one planned from a video that did three times better than normal in your market, posted every week once you approve. Every month you see the numbers video by video, and we make more of whatever's working. On the month-to-month plan, if you don't like what you see, you stop.</p></details>
+      <details><summary>Can you guarantee growth?</summary><p>Anyone who guarantees views is guessing. We guarantee the work: every video each month planned from a video that did three times better than normal in your market, posted every week once you approve. Every month you see the numbers video by video, and we make more of whatever's working. On the month-to-month plan, if you don't like what you see, you stop.</p></details>
       <details><summary>Do I have to be good on camera?</summary><p>No. In the interview you're just talking to us. We ask the questions, you answer, and we keep the best parts.</p></details>
       <details><summary>Do I have to film anything?</summary><p>Only if you want to. If you have time, you film from our scripts. If you don't, one monthly interview covers all your videos.</p></details>
       <details><summary>Why not just hire a video editor?</summary><p>An editor cuts what you send them. We decide what to make, help you make it and post it. Every video is planned from your audit, captions and posting are included, and you get a report every month on what's working.</p></details>
