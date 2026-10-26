@@ -1098,10 +1098,10 @@ footer{background:radial-gradient(50% 120% at 15% 0%,rgba(124,77,255,.35),transp
 .hero h1.shine{color:transparent;-webkit-background-clip:text;background-clip:text;
   background-image:
     radial-gradient(calc(var(--sr) * .22) circle at var(--mx,50%) var(--my,50%),#FFFFFF,rgba(255,255,255,0)),
-    radial-gradient(var(--sr) circle at var(--mx,50%) var(--my,50%),rgba(245,245,242,0) 0%,rgba(245,245,242,0) 40%,var(--ink) 100%),
-    conic-gradient(from var(--ang) at var(--mx,50%) var(--my,50%),#FF7A8A,#FFD66B,#CDFB50,#5CF2C6,#6FC3FF,#B892FF,#FF8AE2,#FF7A8A);
-  transition:--sr .5s var(--ease);animation:gmSpin 2.4s linear infinite}
-.hero h1.shine.lit{--sr:190px}
+    radial-gradient(var(--sr) circle at var(--mx,50%) var(--my,50%),rgba(245,245,242,0) 0%,rgba(245,245,242,.35) 45%,var(--ink) 100%),
+    conic-gradient(from var(--ang) at var(--mx,50%) var(--my,50%),#F3D9E6,#F2ECCF,#E3F3C4,#D3EEE6,#D5E2F5,#E2D8F5,#F3D9E6);
+  transition:--sr .5s var(--ease);animation:gmSpin 6s linear infinite}
+.hero h1.shine.lit{--sr:140px}
 @keyframes gmSpin{to{--ang:360deg}}
 .sparks{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:3}
 .spark{position:absolute;width:var(--s);height:var(--s);margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);background:var(--c);
@@ -1162,8 +1162,8 @@ html.wand,html.wand *{cursor:none!important}
 <div class="wrap">
 
   <header class="hero">
-    <h1>Short videos planned from what <em class="magic">works</em>.</h1>
-    <p class="lede"><strong class="for">For busy founders who want to grow their brand with video.</strong> You don't have time to plan content, so we do it. We find what's already working in your market, make your videos the same way from one interview a month, and post them for you.</p>
+    <h1>Supercharge your growth with <em class="magic">founder-led</em> videos.</h1>
+    <p class="lede"><strong class="for">For busy founders who want to build a brand with video.</strong> You don't have time to plan content, so we do it. We find what's already working in your market, make your videos the same way from one interview a month, and post them for you.</p>
     <div class="ctas">
       <a class="btn" href="#book">Book a call</a>
     </div>
@@ -2668,7 +2668,7 @@ new IntersectionObserver((es, io) => {
   if (!h || !matchMedia('(pointer: fine)').matches) return;
   h.classList.add('shine');
   const sparks = document.createElement('div'); sparks.className = 'sparks'; sparks.setAttribute('aria-hidden', 'true'); hero.append(sparks);
-  const COLORS = ['#FFFFFF', '#F4FFD0', '#CDFB50', '#FFD66B', '#6FC3FF', '#B892FF', '#FF8AE2'];
+  const COLORS = ['#FFFFFF', '#FFFFFF', '#F4FFD0', '#E2D8F5'];
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let lastSpark = 0;
   hero.addEventListener('pointermove', e => {
@@ -2676,13 +2676,13 @@ new IntersectionObserver((es, io) => {
     h.style.setProperty('--mx', (e.clientX - r.left) + 'px'); h.style.setProperty('--my', (e.clientY - r.top) + 'px');
     h.classList.toggle('lit', on);
     const now = performance.now();
-    if (!on || calm || now - lastSpark < 55) return;
+    if (!on || calm || now - lastSpark < 110) return;
     lastSpark = now;
     const hr = hero.getBoundingClientRect(), sp = document.createElement('i');
     sp.className = 'spark';
     sp.style.left = (e.clientX - hr.left + (Math.random() - .5) * 120) + 'px';
     sp.style.top = (e.clientY - hr.top + (Math.random() - .5) * 80) + 'px';
-    sp.style.setProperty('--s', (8 + Math.random() * 14).toFixed(1) + 'px');
+    sp.style.setProperty('--s', (6 + Math.random() * 8).toFixed(1) + 'px');
     sp.style.setProperty('--c', COLORS[(Math.random() * COLORS.length) | 0]);
     sp.addEventListener('animationend', () => sp.remove());
     sparks.append(sp);
