@@ -528,9 +528,6 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 .ph-screen svg{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .ph-scene{position:absolute;inset:0;transition:transform .1s steps(1)}
 .ph-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#E9C9CF}
-.ph-scene[data-cut="0"]{transform:scale(1.25) translate(2%,8%)}
-.ph-scene[data-cut="1"]{transform:scale(1.08) translate(-3%,2%)}
-.ph-scene[data-cut="2"]{transform:scale(1.38) translate(0,12%)}
 .ph-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,0) 18%,rgba(0,0,0,0) 58%,rgba(0,0,0,.55) 86%);pointer-events:none}
 .ph-status{position:absolute;left:0;right:0;top:0;height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 22px 0 26px;font-size:12.5px;z-index:3}
 .ph-status b{font-weight:600;letter-spacing:.01em}
@@ -1051,6 +1048,34 @@ footer{background:radial-gradient(50% 120% at 15% 0%,rgba(124,77,255,.35),transp
 .ticker i{font-style:normal;font-size:15px}
 @keyframes gmTicker{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion: reduce){.ticker-track{animation:none}}
+/* the first seconds: a real 3D phone with one of our videos */
+.tl{perspective:1500px;gap:clamp(40px,6vw,96px)}
+.ph,.tl.playing .ph{position:relative;transform-style:preserve-3d;transform:rotateY(var(--ry,-18deg)) rotateX(var(--rx,6deg)) rotateZ(-1.5deg);transition:transform .9s var(--ease);
+  background:linear-gradient(150deg,#5a5a64 0%,#1d1d22 18%,#0c0c0f 55%,#3a3a44 100%);
+  box-shadow:inset 0 0 0 1.5px #77777f,inset 0 0 0 4px #0b0b0d,0 50px 90px -30px rgba(0,0,0,.9)}
+.ph-side{position:absolute;inset:0;border-radius:50px;background:linear-gradient(90deg,#2a2a31,#0e0e12 40%,#3b3b45);transform:translateZ(var(--z));pointer-events:none}
+.ph-halo{position:absolute;inset:-18% -30%;border-radius:50%;transform:translateZ(-60px);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(124,77,255,.55),rgba(124,77,255,.15) 55%,transparent 75%)}
+.ph-screen{transform:translateZ(1px)}
+.ph-screen::after{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(118deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.04) 28%,transparent 42%)}
+.ph-flash{display:none}
+.ph-vid{background:#111}
+.tl-cap{margin:-8px 0 18px;font-size:14px;color:var(--ink-2)}
+.ph-shade{background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,transparent 14%)}
+.ph-prog{bottom:26px;left:18px;right:18px;border-radius:2px}
+
+/* the three moments: bigger, clearer */
+.secs{gap:12px}
+.secs li{opacity:.45}
+.sec-btn{padding:20px 24px;gap:20px}
+.sec-time{font-size:16px;padding:9px 13px}
+.secs h3{font-size:clamp(22px,2vw,26px);font-weight:800;letter-spacing:-.025em}
+.secs p{font-size:16.5px;color:var(--ink-2);margin-top:4px}
+.secs li.now .sec-btn{background:linear-gradient(90deg,rgba(205,251,80,.10),rgba(255,255,255,.03) 60%)}
+@media (max-width:820px){.ph,.tl.playing .ph{transform:rotateY(-10deg) rotateX(4deg)}}
+@media (prefers-reduced-motion: reduce){.ph,.tl.playing .ph{transform:rotateY(-12deg) rotateX(4deg)}}
+
 /* the wand: a glowing tip and a trail of dust (desktop pointers only) */
 html.wand,html.wand *{cursor:none!important}
 .wand-tip{position:fixed;left:0;top:0;z-index:10000;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;pointer-events:none;background:#F4FFD0;
@@ -1134,61 +1159,45 @@ html.wand,html.wand *{cursor:none!important}
         <span class="eyebrow"><span class="suit">&#9824;</span> The first three seconds</span>
         <h2>Why some founder videos <em class="magic">grow</em> and most don't.</h2>
       </div>
-      <p>Two founders can say the same thing and get completely different results. The difference is usually in the first few seconds: the first line, the words on screen, and how fast the video moves.</p>
+      <p>Two founders can say the same thing and get completely different results. The difference is the first few seconds. Here's how one of ours opens, second by second.</p>
     </div>
     <div class="tl" id="tl">
-      <div class="ph" aria-hidden="true">
+      <div class="ph" aria-hidden="true"><i class="ph-halo"></i><i class="ph-side" style="--z:-2px"></i><i class="ph-side" style="--z:-4px"></i><i class="ph-side" style="--z:-6px"></i><i class="ph-side" style="--z:-8px"></i><i class="ph-side" style="--z:-10px"></i><i class="ph-side" style="--z:-12px"></i>
         <div class="ph-screen">
-          <div class="ph-scene"><video class="ph-vid" muted playsinline preload="none" src="https://videos.pexels.com/video-files/6962123/6962123-sd_506_960_25fps.mp4"></video></div>
+          <div class="ph-scene"><video class="ph-vid" muted playsinline preload="none" poster="work/scg-2.webp" src="work/scg-2.mp4"></video></div>
           <div class="ph-shade"></div>
           <div class="ph-status"><b>9:41</b><span class="ph-island"></span><span class="ph-sys"><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5l2.4-2.9a3.6 3.6 0 0 0-4.8 0zM3.5 6.4l1.5 1.8a4.7 4.7 0 0 1 6 0l1.5-1.8a7 7 0 0 0-9 0zM.8 3.2l1.5 1.8a8.9 8.9 0 0 1 11.4 0l1.5-1.8a11.2 11.2 0 0 0-14.4 0z"/></svg><i class="ph-bat"><i></i></i></span></div>
-          <div class="ph-top"><b>Reels <svg viewBox="0 0 12 8"><path d="M1 1.5l5 5 5-5"/></svg></b><svg class="ph-cam" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="14" rx="4"/><circle cx="12" cy="13" r="3.8"/><path d="M8.5 6l1.4-2.4h4.2L15.5 6"/></svg></div>
-          <div class="ph-sub"><span>Most</span> <span>founders</span> <span>lose</span> <span>people</span> <span>in</span> <span>the</span> <span>first</span> <span>second.</span></div>
-          <div class="ph-big-heart"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 5.3 3.1 1.7-1.9 3.1-3.1 5.3-3.1 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
-          <div class="ph-rail">
-            <span class="ph-like"><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.3-4.5-9.3-8.9C1.3 8.3 3.3 4.8 6.8 4.8c2.1 0 3.5 1.1 5.2 3 1.7-1.9 3.1-3 5.2-3 3.5 0 5.5 3.5 4.1 6.8-2 4.4-9.3 8.9-9.3 8.9z"/></svg><em class="ph-likes">48.2K</em></span>
-            <span><svg viewBox="0 0 24 24"><path d="M20.6 11.4a8.6 8.6 0 1 1-3.4-6.9 8.6 8.6 0 0 1 3.4 6.9zM20.6 20.6l-2.3-4.6"/></svg><em>1,204</em></span>
-            <span><svg viewBox="0 0 24 24"><path d="M4 11V8.5A2.5 2.5 0 0 1 6.5 6H19m0 0l-3-3m3 3l-3 3M20 13v2.5a2.5 2.5 0 0 1-2.5 2.5H5m0 0l3-3m-3 3l3 3"/></svg><em>862</em></span>
-            <span><svg viewBox="0 0 24 24"><path d="M21.5 3.5L10.2 13.4M21.5 3.5l-6.9 17-4.4-7.1-7.7-3.6z"/></svg><em>3,317</em></span>
-            <span><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></span>
-            <i class="ph-audio"></i>
-          </div>
-          <div class="ph-meta">
-            <div class="ph-user"><i class="ph-av"></i><b>yourbrand</b><span>Follow</span></div>
-            <p>The first second decides everything. Here's how to win it <span>... more</span></p>
-            <p class="ph-song"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>yourbrand · Original audio</p>
-          </div>
           <div class="ph-prog"><span></span></div>
-          <div class="ph-nav"><svg viewBox="0 0 24 24"><path d="M3.5 10.5L12 3l8.5 7.5V20a1 1 0 0 1-1 1H15v-6h-6v6H4.5a1 1 0 0 1-1-1z"/></svg><svg class="on" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 8.5h18M8.5 3l3 5.5M14 3l3 5.5"/><path class="f" d="M10 12v5.5l4.8-2.75z"/></svg><svg viewBox="0 0 24 24"><path d="M21.5 3.5L10.2 13.4M21.5 3.5l-6.9 17-4.4-7.1-7.7-3.6z"/></svg><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><i class="ph-me"></i></div>
           <div class="ph-home"></div>
           <div class="ph-flash"></div>
         </div>
       </div>
       <div class="tl-side">
         <div class="tl-bar">
-          <button class="tl-play" type="button" aria-label="Play the first seconds"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h4v16H7zM13 4h4v16h-4z"/></svg><svg class="i-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg></button>
+          <button class="tl-play" type="button" aria-label="Play the first five seconds"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h4v16H7zM13 4h4v16h-4z"/></svg><svg class="i-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg></button>
           <div class="tl-track">
             <div class="tl-rail"><div class="tl-fill"></div></div>
-            <span class="tl-mark" style="--at:0;--c:#FFC21A">0:00</span>
-            <span class="tl-mark" style="--at:.2222;--c:#3DB5FF">0:01</span>
-            <span class="tl-mark" style="--at:.6667;--c:#FF6FA8">0:03</span>
-            <span class="tl-cut" style="--at:.6667"></span><span class="tl-cut" style="--at:.7556"></span><span class="tl-cut" style="--at:.8444"></span>
+            <span class="tl-mark" style="--at:0">0:00</span>
+            <span class="tl-mark" style="--at:.2">0:01</span>
+            <span class="tl-mark" style="--at:.6333">0:03</span>
+            <span class="tl-cut" style="--at:.6333"></span>
             <div class="tl-head"></div>
-            <input class="tl-range" type="range" min="0" max="4500" step="10" value="0" aria-label="Scrub through the first seconds of a video">
+            <input class="tl-range" type="range" min="0" max="5000" step="10" value="0" aria-label="Scrub through the first seconds of a video">
           </div>
           <span class="tl-time" aria-hidden="true">0:00</span>
         </div>
-        <ol class="secs" aria-label="The first few seconds">
-          <li data-t="0"><button type="button" class="sec-btn"><span class="sec-time">0:00</span><span class="sec-txt"><h3>The first line</h3><p>What you say before anyone decides to keep watching.</p></span></button></li>
-          <li data-t="1000"><button type="button" class="sec-btn"><span class="sec-time">0:01</span><span class="sec-txt"><h3>The words on screen</h3><p>Most people watch with the sound off, so the hook has to be readable.</p></span></button></li>
-          <li data-t="3000"><button type="button" class="sec-btn"><span class="sec-time">0:03</span><span class="sec-txt"><h3>How fast it moves</h3><p>The pace that keeps people watching to the end.</p></span></button></li>
+        <p class="tl-cap">Made for Schmidt Consulting Group</p>
+        <ol class="secs" aria-label="The first five seconds">
+          <li data-t="0"><button type="button" class="sec-btn"><span class="sec-time">0:00</span><span class="sec-txt"><h3>The first line</h3><p>&ldquo;This is how to run a sh!t agency.&rdquo; It promises the opposite of every agency video, so you stay to see why.</p></span></button></li>
+          <li data-t="1000"><button type="button" class="sec-btn"><span class="sec-time">0:01</span><span class="sec-txt"><h3>The words on screen</h3><p>Every word is on screen as he says it, so it lands with the sound off.</p></span></button></li>
+          <li data-t="3167"><button type="button" class="sec-btn"><span class="sec-time">0:03</span><span class="sec-txt"><h3>The first cut</h3><p>As the hook lands, it cuts from the street to his kitchen for step one. A new shot keeps people watching.</p></span></button></li>
         </ol>
       </div>
     </div>
     <script>
 (() => {
   const root = document.getElementById('tl'); if (!root) return;
-  const D = 4500, cuts = [3000, 3400, 3800];
+  const D = 5000, cuts = [3167];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const range = root.querySelector('.tl-range'), play = root.querySelector('.tl-play'), timeEl = root.querySelector('.tl-time');
   const words = [...root.querySelectorAll('.ph-sub span')], cards = [...root.querySelectorAll('.secs li')];
@@ -1198,7 +1207,7 @@ html.wand,html.wand *{cursor:none!important}
   function render(){
     root.style.setProperty('--p', (t / D).toFixed(4));
     range.value = Math.round(t);
-    timeEl.textContent = '0:0' + Math.min(4, Math.floor(t / 1000));
+    timeEl.textContent = '0:0' + Math.min(5, Math.floor(t / 1000));
     words.forEach((w, i) => w.classList.toggle('on', t >= 80 + i * 110));
     root.classList.toggle('s1', t >= 0 && (t > 0 || done));
     root.classList.toggle('s2', t >= 1000);
@@ -1232,6 +1241,12 @@ html.wand,html.wand *{cursor:none!important}
   cards.forEach(c => c.querySelector('button').addEventListener('click', () => start(Math.max(1, +c.dataset.t))));
   if (reduced){ t = D; done = true; }
   render();
+  // the phone leans toward the pointer
+  const ph = root.querySelector('.ph'), sec = root.closest('section');
+  if (matchMedia('(pointer: fine)').matches && !reduced){
+    sec.addEventListener('pointermove', e => { const r = ph.getBoundingClientRect(), x = (e.clientX - (r.left + r.width / 2)) / innerWidth, y = (e.clientY - (r.top + r.height / 2)) / innerHeight; ph.style.setProperty('--ry', (-18 + x * 22).toFixed(2) + 'deg'); ph.style.setProperty('--rx', (6 - y * 12).toFixed(2) + 'deg'); });
+    sec.addEventListener('pointerleave', () => { ph.style.removeProperty('--ry'); ph.style.removeProperty('--rx'); });
+  }
   new IntersectionObserver((es, o) => { if (es[0].isIntersecting){ o.disconnect(); vid.preload = 'auto'; vid.load(); if (reduced){ vid.addEventListener('loadeddata', () => seek(D), { once: true }); return; } vid.addEventListener('loadeddata', () => setTimeout(() => start(0), 250), { once: true }); setTimeout(() => { if (!done) start(0); }, 2500); } }, { threshold: .35 }).observe(root);
 })();
     </script>
@@ -1249,13 +1264,11 @@ html.wand,html.wand *{cursor:none!important}
     </div>
     <div class="ways">
       <article class="way">
-        <svg class="way-ic" viewBox="0 0 64 64" aria-hidden="true"><rect x="19" y="5" width="26" height="54" rx="6" class="f"/><path d="M28 10h8"/><circle cx="32" cy="27" r="7" class="w"/><path d="M27 41h10M25 47h14"/><circle cx="51" cy="12" r="5" class="dot"/></svg>
         <span class="way-tag">Yes, I can film</span>
         <h3>You film, we do the rest.</h3>
         <p>We send you a script and a shooting guide for each video, built from a reference video that did far better than normal: what to say first, what to do on camera, where to stand and how to frame it. You record on your phone. We edit, caption and post.</p>
       </article>
       <article class="way">
-        <svg class="way-ic" viewBox="0 0 64 64" aria-hidden="true"><rect x="5" y="11" width="54" height="36" rx="6" class="f"/><circle cx="23" cy="26" r="6" class="w"/><path d="M14 40c2-6 16-6 18 0" class="w"/><rect x="37" y="17" width="16" height="12" rx="3" class="w"/><path d="M22 55h20M32 47v8"/></svg>
         <span class="way-tag">No, I don't have time</span>
         <h3>We interview you.</h3>
         <p>We interview you once a month on a video call. We bring the questions, built from your audit and the bank, and you answer them the way you'd explain it to a client. It runs about 1½ to 2 hours and it's the only filming you do that month.</p>
