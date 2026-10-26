@@ -769,9 +769,9 @@ h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.015em}
 .mid-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 18px;margin-top:clamp(40px,5vw,56px)}
 
 /* hero: the reveal, then the hand of cards */
-.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding-block:clamp(48px,7vw,100px) 0}
-.hero h1{font-size:clamp(40px,6.2vw,84px);line-height:1.02;max-width:15ch;margin:22px auto}
-.hero .lede{max-width:60ch;margin:0 auto 30px;color:var(--ink-2)}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding-block:clamp(28px,4.5vw,64px) 0}
+.hero h1{font-size:clamp(38px,5.2vw,72px);line-height:1.02;max-width:16ch;margin:0 auto 20px}
+.hero .lede{max-width:66ch;margin:0 auto 26px;color:var(--ink-2)}
 .hero .ctas{justify-content:center}
 .hero .cta-note{margin:14px 0 0}
 /* who it's for: a highlighter swipe that draws in after the headline */
@@ -783,25 +783,21 @@ h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.015em}
 .hero .lede{animation-delay:.2s}
 .hero .ctas,.hero .cta-note{animation-delay:.32s}
 @keyframes gmReveal{from{opacity:0;filter:blur(14px);transform:translateY(14px)}}
-.hand{position:relative;width:min(100%,660px);height:clamp(320px,38vw,450px);margin:clamp(44px,6vw,72px) auto 0}
-.hand::before{content:"";position:absolute;inset:-12% -24% 0;z-index:-1;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 24%,transparent),transparent)}
-.card{position:absolute;left:50%;bottom:0;width:clamp(160px,18vw,232px);aspect-ratio:9/16;margin:0;border-radius:18px;overflow:hidden;background:var(--paper-2);border:4px solid var(--card);box-shadow:0 0 0 1px var(--line),0 34px 60px -26px rgba(22,20,46,.55);transform-origin:50% 130%;transition:transform .9s var(--ease);animation:gmDeal 1.1s var(--ease) backwards}
-.card img,.card video{display:block;width:100%;height:100%;object-fit:cover}
-.card::after{position:absolute;top:8px;left:11px;font:600 18px/1 var(--f-display);color:#FFFFFF;text-shadow:0 1px 6px rgba(0,0,0,.45)}
-.c1{transform:translateX(-50%) rotate(-11deg) translateX(-34%);animation-delay:.45s}
-.c1::after{content:"\2660"}
-.c2{z-index:2;transform:translateX(-50%) translateY(-5%);animation-delay:.55s}
-.c2::after{content:"\2665";color:#FFFFFF}
-.c3{transform:translateX(-50%) rotate(11deg) translateX(34%);animation-delay:.65s}
-.c3::after{content:"\2663"}
-@media (hover:hover){
-  .hand:hover .c1{transform:translateX(-50%) rotate(-17deg) translateX(-58%)}
-  .hand:hover .c2{transform:translateX(-50%) translateY(-10%)}
-  .hand:hover .c3{transform:translateX(-50%) rotate(17deg) translateX(58%)}
-}
-@media (max-width:520px){.hand{height:300px}.c1{transform:translateX(-50%) rotate(-8deg) translateX(-22%)}.c3{transform:translateX(-50%) rotate(8deg) translateX(22%)}}
-@keyframes gmDeal{from{opacity:0;transform:translateX(-50%) translateY(30%) rotate(0)}}
-.hand-cap{margin:18px 0 0;font-size:14px;color:var(--ink-2)}
+/* the reel under the hero: real videos, playing, drifting past */
+.hero-reel{position:relative;margin-top:clamp(28px,4vw,48px);animation:gmReveal 1.2s var(--ease) .45s both}
+.hero-reel::before{content:"";position:absolute;left:10%;right:10%;top:6%;height:70%;z-index:-1;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 20%,transparent),transparent)}
+.hero-reel .marquee{padding-block:12px 8px}
+.hero-reel .marquee-track{gap:18px}
+.hero-reel .marquee .vid{width:clamp(180px,17vw,236px)}
+.hero-reel .vid-frame{border-radius:22px;box-shadow:0 0 0 1px var(--line),0 26px 50px -28px rgba(22,20,46,.6)}
+.hero-reel .vid video{filter:none}
+.hero-reel .marquee .vid:hover .vid-frame{transform:translateY(-4px)}
+.hero-reel button.play{left:auto;top:auto;right:12px;bottom:12px;transform:none;width:42px;height:42px;border:1px solid rgba(255,255,255,.55);background:rgba(22,20,46,.28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hero-reel .vid:hover button.play{transform:scale(1.08)}
+.hero-reel button.play svg{width:16px;height:16px;margin-left:2px}
+.hero-reel button.play svg path{fill:#FFFFFF}
+.hero-reel .vid figcaption{margin-top:10px;font-size:14px}
+.hero-reel .marquee-ui{margin-top:20px}
 
 /* proof strip */
 .strip{padding-top:clamp(56px,7vw,96px)}
@@ -924,7 +920,7 @@ footer .wordmark .gm-hat .hat-shine{stroke:#110E24}
 .faq{margin-inline:auto}
 .price-note{text-align:center}
 
-@media (prefers-reduced-motion: reduce){.magic,.for{animation:none}.hero > *,.card{animation:none}}
+@media (prefers-reduced-motion: reduce){.magic,.for{animation:none}.hero > *,.hero-reel{animation:none}}
 </style>
 </head>
 <body>
@@ -962,22 +958,20 @@ footer .wordmark .gm-hat .hat-shine{stroke:#110E24}
 <div class="wrap">
 
   <header class="hero">
-    <span class="eyebrow"><span class="suit">&#10022;</span> Now you see what works</span>
     <h1>Short videos planned from what already <em class="magic">grows</em> accounts in your&nbsp;market.</h1>
     <p class="lede"><strong class="for">For founders who already post.</strong> We audit your posts and your competitors', find the videos that did three times better than normal and work out why. Then we make yours the same way, from one interview a month or a script you film, and post them to Instagram, TikTok, YouTube Shorts and LinkedIn.</p>
     <div class="ctas">
       <a class="btn" href="#book">Book a call</a>
-      <a class="btn ghost" href="#work">See our work</a>
     </div>
     <p class="cta-note">Free. We look at your content before we talk.</p>
-    <div class="hand">
-      <figure class="card c1"><img src="work/scg-1.webp" alt="" width="270" height="480"></figure>
-      <figure class="card c2"><video src="work/scg-2.mp4" poster="work/scg-2.webp" muted loop playsinline autoplay preload="metadata" aria-label="A video we made for Schmidt Consulting Group"></video></figure>
-      <figure class="card c3"><img src="work/scg-3.webp" alt="" width="270" height="480"></figure>
-    </div>
-    <p class="hand-cap">Made for Schmidt Consulting Group</p>
   </header>
+</div>
 
+<div class="hero-reel" id="work" aria-label="Videos we've made">
+  <div id="workList"></div>
+</div>
+
+<div class="wrap">
   <section class="strip" aria-label="What working with us takes">
     <ul class="eases">
       <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span><b>About 1½ to 2 hours a month.</b> One interview covers all 30 videos, or film from our scripts instead.</span></li>
@@ -1207,22 +1201,6 @@ footer .wordmark .gm-hat .hat-shine{stroke:#110E24}
         <li class="w-yt"><span class="lg lg-yt" aria-hidden="true"></span>YouTube Shorts</li>
         <li class="w-li"><svg class="lg" aria-hidden="true"><use href="#li-logo"></use></svg>LinkedIn</li>
       </ul>
-    </div>
-  </section>
-
-  <section class="block" id="work">
-    <div class="wrap">
-      <div class="block-head">
-        <div>
-          <span class="eyebrow"><span class="suit red">&#9829;</span> Real work</span>
-        <h2>Our work.</h2>
-        </div>
-        <p>Founder videos we've made. Tap one to play.</p>
-      </div>
-    </div>
-    <div id="workList"></div>
-    <div class="wrap">
-      <div class="mid-cta"><a class="btn" href="#book">Book a call</a><span class="cta-note">Free. We look at your content before we talk.</span></div>
     </div>
   </section>
 
@@ -2130,7 +2108,7 @@ function stopVid(fig){
   fig.classList.remove('playing');
   clearTimeout(fig._auto);
   const video = fig.querySelector('video');
-  if (video){ video.controls = false; video.muted = true; video.loop = true; if (!video.paused) video.pause(); }
+  if (video){ video.controls = false; video.muted = true; video.loop = true; if (fig.dataset.auto && !reduced) video.play().catch(() => {}); else if (!video.paused) video.pause(); }
   if (nowPlaying === fig) nowPlaying = null;
   if (fig._hooks && fig._hooks.onStop) fig._hooks.onStop(fig);
 }
@@ -2155,7 +2133,7 @@ function wireVids(root, blocked, hooks){
     if (!btn) return;
     if (video){
       fig.addEventListener('pointerenter', e => { if (e.pointerType !== 'touch' && !fig.classList.contains('playing') && !reduced) video.play().catch(() => {}); });
-      fig.addEventListener('pointerleave', () => { if (!fig.classList.contains('playing')){ video.pause(); try { video.currentTime = 0; } catch(e){} } });
+      fig.addEventListener('pointerleave', () => { if (!fig.classList.contains('playing') && !fig.dataset.auto){ video.pause(); try { video.currentTime = 0; } catch(e){} } });
       video.addEventListener('ended', () => stopVid(fig));
       video.addEventListener('pause', () => { if (fig.classList.contains('playing') && !video.seeking && !video.ended) stopVid(fig); });
     }
@@ -2225,8 +2203,20 @@ function renderWork(){
     });
   }
   fill();
+  // the reel plays itself: muted loops, only while each video is on screen
+  const onScreen = new IntersectionObserver(es => es.forEach(e => {
+    const fig = e.target.closest('.vid'), vid = e.target;
+    if (fig.classList.contains('playing')) return;
+    if (e.isIntersecting && !reduced) vid.play().catch(() => {}); else vid.pause();
+  }), { threshold: .25 });
+  const autoplay = () => track.querySelectorAll('.vid').forEach(fig => {
+    const vid = fig.querySelector('video'); if (!vid) return;
+    fig.dataset.auto = '1'; vid.muted = true; vid.loop = true; vid.preload = 'auto';
+    onScreen.observe(vid);
+  });
+  autoplay();
   let lastW = mq.clientWidth;
-  new ResizeObserver(() => { if (Math.abs(mq.clientWidth - lastW) > 30){ lastW = mq.clientWidth; fill(); } }).observe(mq);
+  new ResizeObserver(() => { if (Math.abs(mq.clientWidth - lastW) > 30){ lastW = mq.clientWidth; fill(); autoplay(); } }).observe(mq);
 
   // motion
   const SPEED = 30; // pixels per second: slow drift
@@ -2399,7 +2389,6 @@ new IntersectionObserver((es, io) => {
   sc.src = 'https://assets.calendly.com/assets/external/widget.js'; sc.async = true;
   document.head.appendChild(sc);
 }, { rootMargin: '800px 0px' }).observe(document.getElementById('book'));
-if (reduced) document.querySelector('.hand video').pause();
 
 /* ---------- sticky nav: tighten once the page scrolls ---------- */
 (() => { const bar = document.getElementById('navBar'); if (!bar) return; let on = false;
