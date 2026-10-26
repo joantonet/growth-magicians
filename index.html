@@ -2561,9 +2561,9 @@ new IntersectionObserver((es, io) => {
   const dust = []; let px = -1, py = -1, running = false;
   const spawn = (x, y, dx, dy) => {
     if (dust.length > 260) return;
-    dust.push({ x: x + (Math.random() - .5) * 6, y: y + (Math.random() - .5) * 6,
-      vx: (Math.random() - .5) * .5 - dx * .04, vy: (Math.random() - .3) * .5 - dy * .03,
-      r: .6 + Math.random() * 1.9, life: 0, max: 650 + Math.random() * 650,
+    dust.push({ x: x + (Math.random() - .5) * 3, y: y + (Math.random() - .5) * 3,
+      vx: (Math.random() - .5) * .25 - dx * .01, vy: (Math.random() - .3) * .25 - dy * .01,
+      r: .4 + Math.random() * .9, life: 0, max: 450 + Math.random() * 450,
       c: COLORS[(Math.random() * COLORS.length) | 0], tw: 6 + Math.random() * 10 });
   };
   let last = performance.now();
@@ -2576,8 +2576,8 @@ new IntersectionObserver((es, io) => {
       if (d.life >= d.max){ dust.splice(i, 1); continue; }
       d.vy += .0016 * dt; d.vx *= .985; d.x += d.vx * dt * .06; d.y += d.vy * dt * .06;
       const k = 1 - d.life / d.max, a = k * (.65 + .35 * Math.sin(d.life / 1000 * d.tw));
-      ctx.globalAlpha = a * .35; ctx.fillStyle = d.c;
-      ctx.beginPath(); ctx.arc(d.x, d.y, d.r * 3.2, 0, 7); ctx.fill();
+      ctx.globalAlpha = a * .18; ctx.fillStyle = d.c;
+      ctx.beginPath(); ctx.arc(d.x, d.y, d.r * 2.2, 0, 7); ctx.fill();
       ctx.globalAlpha = a; ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 7); ctx.fill();
     }
     ctx.globalAlpha = 1;
@@ -2588,7 +2588,7 @@ new IntersectionObserver((es, io) => {
     const x = e.clientX, y = e.clientY;
     tip.style.transform = `translate3d(${x}px,${y}px,0)`; tip.classList.add('on');
     if (px >= 0){
-      const dx = x - px, dy = y - py, n = Math.min(5, Math.hypot(dx, dy) / 7 | 0);
+      const dx = x - px, dy = y - py, n = Math.min(3, Math.hypot(dx, dy) / 12 | 0);
       for (let i = 0; i < n; i++) spawn(px + dx * i / n, py + dy * i / n, dx, dy);
     }
     px = x; py = y;
@@ -2596,7 +2596,7 @@ new IntersectionObserver((es, io) => {
     tip.classList.toggle('big', !!hot);
     if (!running && dust.length){ running = true; last = performance.now(); requestAnimationFrame(tick); }
   }, { passive: true });
-  addEventListener('pointerdown', e => { if (e.pointerType === 'touch') return; for (let i = 0; i < 14; i++) spawn(e.clientX, e.clientY, (Math.random() - .5) * 60, (Math.random() - .5) * 60); if (!running){ running = true; last = performance.now(); requestAnimationFrame(tick); } }, { passive: true });
+  addEventListener('pointerdown', e => { if (e.pointerType === 'touch') return; for (let i = 0; i < 8; i++) spawn(e.clientX, e.clientY, (Math.random() - .5) * 60, (Math.random() - .5) * 60); if (!running){ running = true; last = performance.now(); requestAnimationFrame(tick); } }, { passive: true });
   document.addEventListener('pointerleave', () => { tip.classList.remove('on'); px = -1; });
   addEventListener('blur', () => { tip.classList.remove('on'); px = -1; });
 })();
