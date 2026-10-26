@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="Growth Magicians | Short videos planned from what works">
 <meta name="twitter:description" content="Short videos for founders, planned from an audit of what already grows accounts in your market. Made from one interview a month and posted to Instagram, TikTok, YouTube Shorts and LinkedIn.">
 <meta name="twitter:image" content="https://growthmagicians.com/og.png">
-<meta name="theme-color" content="#F3F4EE">
+<meta name="theme-color" content="#F8F7FC">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F3F4EE'/%3E%3Cg transform='translate(4 10) rotate(-8 28 22)'%3E%3Cpath fill='%2317193F' d='M14 5Q14 1 30 1Q46 1 46 5L43 34H17Z'/%3E%3Cpath fill='%237655AC' d='M16.3 25H43.7L43 34H17Z'/%3E%3Cpath fill='%2317193F' d='M2 36Q30 30 58 36Q60 42 52 43Q30 38 8 43Q0 42 2 36Z'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://growthmagicians.com/#org","name":"Growth Magicians","url":"https://growthmagicians.com/","logo":"https://growthmagicians.com/icon-512.png","image":"https://growthmagicians.com/og.png","description":"Short videos for founders, planned from an audit of what already grows accounts in your market. Made from one interview a month and posted to Instagram, TikTok, YouTube Shorts and LinkedIn.","slogan":"Short videos planned from what works.","areaServed":"Worldwide","priceRange":"$2,500 to $3,500 per month","hasOfferCatalog":{"@type":"OfferCatalog","name":"Plans","itemListElement":[{"@type":"Offer","name":"Month to month","description":"Audit, scripts or a monthly interview, short videos edited, captioned and posted, unlimited revisions and a monthly growth report. No commitment.","priceCurrency":"USD","price":"3500","url":"https://growthmagicians.com/#pricing"},{"@type":"Offer","name":"3-month plan","description":"Everything in month to month, with a 3-month commitment.","priceCurrency":"USD","price":"3000","url":"https://growthmagicians.com/#pricing"},{"@type":"Offer","name":"6-month plan","description":"Everything in month to month, with a 6-month commitment.","priceCurrency":"USD","price":"2500","url":"https://growthmagicians.com/#pricing"}]},"knowsAbout":["Short-form video","Instagram Reels","TikTok","YouTube Shorts","LinkedIn video","Founder-led content","Social media audits"],"potentialAction":{"@type":"ReserveAction","name":"Book a call","target":"https://calendly.com/jo-growthmagicians/discovery-call"}},{"@type":"WebSite","@id":"https://growthmagicians.com/#site","url":"https://growthmagicians.com/","name":"Growth Magicians","publisher":{"@id":"https://growthmagicians.com/#org"},"inLanguage":"en"}]}</script>
@@ -28,15 +28,17 @@
 <title>Growth Magicians | Short videos planned from what works</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500..600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
 <style>
 :root{
-  --paper:#F3F4EE;
-  --paper-2:#E4E6DB;
-  --ink:#16141C;
-  --ink-2:#55535E;
+  --paper:#F8F7FC;
+  --paper-2:#EFECF8;
+  --card:#FFFFFF;
+  --line:rgba(22,20,46,.10);
+  --ink:#16142E;
+  --ink-2:#5D5A75;
   --accent:#6A3BF2;
-  --on-ink:#F3F4EE;
+  --on-ink:#F8F7FC;
   --c-violet:#7C4DFF;
   --c-sun:#FFB703;
   --c-mint:#1FCB84;
@@ -44,19 +46,20 @@
   --c-sky:#2FA8FF;
   --band:#5A31F4; --band-ink:#FFFFFF; --band-ink-2:#E6DEFF;
   --g:clamp(16px,4vw,48px);
-  --f-display:"Fraunces","Georgia",serif;
+  --f-display:"Inter Tight","Hanken Grotesk",system-ui,sans-serif;
+  --f-magic:"Instrument Serif","Georgia",serif;
   --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --ease:cubic-bezier(.16,1,.3,1);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#141318; --paper-2:#211F28; --ink:#ECEAE3; --ink-2:#A8A5B1;
-    --accent:#A68CFF; --on-ink:#141318; --band:#4A26D6; color-scheme:dark;
+    --paper:#0D0C16; --paper-2:#17152A; --card:#141224; --line:rgba(255,255,255,.10); --ink:#EFECF8; --ink-2:#A6A2BA;
+    --accent:#A68CFF; --on-ink:#0D0C16; --band:#4A26D6; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#141318; --paper-2:#211F28; --ink:#ECEAE3; --ink-2:#A8A5B1;
-  --accent:#A68CFF; --on-ink:#141318; --band:#4A26D6; color-scheme:dark;
+  --paper:#0D0C16; --paper-2:#17152A; --card:#141224; --line:rgba(255,255,255,.10); --ink:#EFECF8; --ink-2:#A6A2BA;
+  --accent:#A68CFF; --on-ink:#0D0C16; --band:#4A26D6; color-scheme:dark;
 }
 
 *{box-sizing:border-box}
@@ -722,111 +725,200 @@ button.play.inline{position:static;transform:none;cursor:pointer}
 .faq summary:hover::after{background:var(--c-sun);color:#16141C}
 .faq details p{margin:0;padding:0 22px 20px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:68ch}
 
-/* ================= calm look: paper, ink and one accent ================= */
-:root{--on-accent:#FFFFFF}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--on-accent:#141318}}
-:root[data-theme="dark"]{--on-accent:#141318}
-::selection{background:color-mix(in srgb,var(--accent) 25%,transparent);color:inherit}
-h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
+/* ================= modern magician: light, sleek, a little sleight of hand ================= */
+body{background:radial-gradient(1000px 560px at 50% -120px,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%) no-repeat,var(--paper)}
+::selection{background:color-mix(in srgb,var(--accent) 22%,transparent);color:inherit}
+h1,.h1,h2{font-family:var(--f-display);font-weight:600;letter-spacing:-.035em}
+h2{font-size:clamp(32px,4.2vw,54px);line-height:1.05}
+h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.015em}
 
-/* buttons: violet, so the next step is the brightest thing on screen */
-.btn{background:var(--accent);border:2px solid var(--accent);color:var(--on-accent)}
-.btn:hover{background:var(--ink);border-color:var(--ink);color:var(--on-ink);transform:translateY(-1px);box-shadow:none}
-.theme-btn,.icon-btn,.menu-btn{border-width:2px}
-.theme-btn:hover,.icon-btn:hover{background:var(--paper-2);color:var(--ink);transform:none}
-.ctas{align-items:center;gap:14px 18px}
+/* the magic word: italic serif with a slow shimmer */
+.magic{font-family:var(--f-magic);font-style:italic;font-weight:400;font-size:1.08em;letter-spacing:-.01em;padding-right:.04em;
+  background:linear-gradient(100deg,var(--accent) 0%,#B892FF 28%,#4F7BFF 52%,var(--accent) 76%) 0 0/250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:gmShimmer 7s linear infinite}
+@keyframes gmShimmer{to{background-position:-250% 0}}
+
+/* pill labels, with card suits */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:600 13.5px/1 var(--f-body);padding:9px 15px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink-2);box-shadow:0 1px 2px rgba(22,20,46,.05)}
+.suit{color:var(--ink);font-size:13px}
+.suit.red,.hero .eyebrow .suit{color:var(--accent)}
+
+/* nav: a floating glass pill */
+.nav-bar{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;padding-top:12px}
+.nav-bar.stuck{box-shadow:none}
+.nav,.nav-bar.stuck .nav{padding:9px 10px 9px 22px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 80%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 10px 30px -20px rgba(22,20,46,.4)}
+.wordmark{height:clamp(24px,2.6vw,30px)}
+.nav-links{font-weight:500;color:var(--ink-2)}
+.nav-links a:not(.btn)::after{background:var(--accent)}
+.theme-btn,.menu-btn{border:1px solid var(--line);background:var(--card)}
+.theme-btn{width:40px;height:40px}
+.theme-btn:hover{background:var(--paper-2);color:var(--ink);transform:rotate(20deg)}
+@media (max-width:1040px){.nav-links{border:1px solid var(--line);background:var(--card);box-shadow:0 20px 40px -20px rgba(22,20,46,.35)}}
+
+/* buttons: violet with a light sweep, like a card flourish */
+.btn{position:relative;overflow:hidden;isolation:isolate;border:0;padding:16px 24px;color:#FFFFFF;background:linear-gradient(135deg,#7D52FF,#5A2DE6);box-shadow:0 12px 26px -12px rgba(106,59,242,.7),inset 0 1px 0 rgba(255,255,255,.28)}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s var(--ease)}
+.btn:hover{color:#FFFFFF;background:linear-gradient(135deg,#7D52FF,#5A2DE6);transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(106,59,242,.75),inset 0 1px 0 rgba(255,255,255,.28)}
+.btn:hover::after{transform:translateX(120%)}
+.btn.sm{padding:11px 18px}
+.btn.ghost,.btn.ghost:hover{background:var(--card);color:var(--ink);box-shadow:0 0 0 1px var(--line),0 8px 20px -14px rgba(22,20,46,.35)}
+.btn.ghost::after{background:linear-gradient(110deg,transparent 30%,color-mix(in srgb,var(--accent) 14%,transparent) 50%,transparent 70%)}
+.icon-btn{border:1px solid var(--line);background:var(--card)}
+.icon-btn:hover{background:var(--paper-2);color:var(--ink)}
+.ctas{align-items:center;gap:12px}
 .cta-note{font-size:15px;color:var(--ink-2)}
-.btn.ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
-.btn.ghost:hover{background:var(--paper-2);border-color:var(--ink);color:var(--ink)}
 .mid-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 18px;margin-top:clamp(40px,5vw,56px)}
 
-/* hero: the line, the ask, and a real video */
-.hero{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px 64px;align-items:center;padding-block:clamp(28px,5vw,64px) 0}
-.hero h1{font-size:clamp(36px,5vw,66px);line-height:1.04;max-width:17ch;margin-bottom:22px}
-.hero .lede{max-width:52ch}
-.hero-shot{margin:0;justify-self:end;width:min(100%,290px)}
-.hero-shot video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:20px;background:var(--paper-2)}
-.hero-shot figcaption{margin-top:10px;font-size:14px;color:var(--ink-2);text-align:center}
-@media (max-width:860px){.hero{grid-template-columns:1fr}.hero-shot{justify-self:center;width:min(62%,240px)}}
+/* hero: the reveal, then the hand of cards */
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding-block:clamp(48px,7vw,100px) 0}
+.hero h1{font-size:clamp(40px,6.2vw,84px);line-height:1.02;max-width:15ch;margin:22px auto}
+.hero .lede{max-width:60ch;margin:0 auto 30px;color:var(--ink-2)}
+.hero .ctas{justify-content:center}
+.hero .cta-note{margin:14px 0 0}
+.hero > *{animation:gmReveal 1.1s var(--ease) both}
+.hero h1{animation-delay:.08s}
+.hero .lede{animation-delay:.2s}
+.hero .ctas,.hero .cta-note{animation-delay:.32s}
+@keyframes gmReveal{from{opacity:0;filter:blur(14px);transform:translateY(14px)}}
+.hand{position:relative;width:min(100%,660px);height:clamp(320px,38vw,450px);margin:clamp(44px,6vw,72px) auto 0}
+.hand::before{content:"";position:absolute;inset:-12% -24% 0;z-index:-1;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 24%,transparent),transparent)}
+.card{position:absolute;left:50%;bottom:0;width:clamp(160px,18vw,232px);aspect-ratio:9/16;margin:0;border-radius:18px;overflow:hidden;background:var(--paper-2);border:4px solid var(--card);box-shadow:0 0 0 1px var(--line),0 34px 60px -26px rgba(22,20,46,.55);transform-origin:50% 130%;transition:transform .9s var(--ease);animation:gmDeal 1.1s var(--ease) backwards}
+.card img,.card video{display:block;width:100%;height:100%;object-fit:cover}
+.card::after{position:absolute;top:8px;left:11px;font:600 18px/1 var(--f-display);color:#FFFFFF;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.c1{transform:translateX(-50%) rotate(-11deg) translateX(-34%);animation-delay:.45s}
+.c1::after{content:"\2660"}
+.c2{z-index:2;transform:translateX(-50%) translateY(-5%);animation-delay:.55s}
+.c2::after{content:"\2665";color:#FFFFFF}
+.c3{transform:translateX(-50%) rotate(11deg) translateX(34%);animation-delay:.65s}
+.c3::after{content:"\2663"}
+@media (hover:hover){
+  .hand:hover .c1{transform:translateX(-50%) rotate(-17deg) translateX(-58%)}
+  .hand:hover .c2{transform:translateX(-50%) translateY(-10%)}
+  .hand:hover .c3{transform:translateX(-50%) rotate(17deg) translateX(58%)}
+}
+@media (max-width:520px){.hand{height:300px}.c1{transform:translateX(-50%) rotate(-8deg) translateX(-22%)}.c3{transform:translateX(-50%) rotate(8deg) translateX(22%)}}
+@keyframes gmDeal{from{opacity:0;transform:translateX(-50%) translateY(30%) rotate(0)}}
+.hand-cap{margin:18px 0 0;font-size:14px;color:var(--ink-2)}
 
-/* proof strip: the three worries, then the brands */
-.strip{padding-top:clamp(48px,6vw,72px)}
-.eases{list-style:none;margin:0;padding:24px 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 32px;border-block:1.5px solid var(--paper-2)}
+/* proof strip */
+.strip{padding-top:clamp(56px,7vw,96px)}
+.eases{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media (max-width:860px){.eases{grid-template-columns:1fr}}
 .eases li,.book li{display:grid;grid-template-columns:24px 1fr;gap:12px;line-height:1.45}
-.eases li{font-size:16.5px;color:var(--ink-2)}
+.eases li{font-size:16px;color:var(--ink-2)}
 .eases b{color:var(--ink)}
-.eases svg,.book li svg{width:24px;height:24px}
+.eases svg,.book li svg{width:22px;height:22px}
 .eases svg path,.book li svg path,.gets svg path{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.strip .brands{margin-top:40px}
-.brands-title{font:600 15px/1.4 var(--f-body);color:var(--ink-2);margin-bottom:18px}
-.brand-row li.logo{box-shadow:none;border:1.5px solid var(--paper-2);width:150px;height:84px;padding:14px 18px}
-.brand-row li:hover{transform:none}
+.strip .brands{margin-top:clamp(40px,5vw,56px)}
+.brands-title{font:500 14px/1.4 var(--f-body);color:var(--ink-2);margin-bottom:18px}
+.brand-row li.logo{box-shadow:0 0 0 1px var(--line);border:0;width:150px;height:84px;padding:14px 18px;filter:grayscale(1);opacity:.8;transition:filter .4s,opacity .4s}
+.brand-row li.logo:hover{filter:none;opacity:1;transform:none}
 
-/* why some videos grow: on paper */
-.why-note{color:var(--ink-2)}
-.ph{transform:none}
+/* section heads: centred, like a stage */
+.block-head{grid-template-columns:1fr;justify-items:center;text-align:center;gap:14px;margin-bottom:clamp(36px,5vw,56px)}
+.block-head h2{margin-top:16px;max-width:20ch;margin-inline:auto}
+.block-head p{max-width:54ch;margin-inline:auto;color:var(--ink-2)}
+
+/* white cards with hairline borders */
+.eases li,.way,.find,.plan,.faq details,.where,.cmp-wrap,.sec-btn,.steps.steps-2 li{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 1px 2px rgba(22,20,46,.04),0 16px 36px -26px rgba(22,20,46,.3)}
+.eases li{padding:20px 22px}
+
+/* why: the phone and its timeline */
+.why-note{color:var(--ink-2);margin-inline:auto;text-align:center}
+.ph{transform:rotate(-2deg)}
 .tl-rail{background:var(--paper-2)}
-.tl-fill{background:var(--ink)}
-.tl-head{background:var(--paper);box-shadow:0 0 0 2px var(--ink)}
-.tl-mark{background:var(--ink-2);box-shadow:0 0 0 2px var(--paper)}
+.tl-fill{background:linear-gradient(90deg,#7D52FF,#4F7BFF)}
+.tl-head{background:var(--card);box-shadow:0 0 0 1px var(--line),0 4px 10px rgba(22,20,46,.2)}
+.tl-mark{background:var(--accent);box-shadow:0 0 0 3px var(--card)}
 .tl-cut{background:var(--accent)}
-.tl-play,.tl-play:active{box-shadow:0 0 0 2px var(--ink)}
-.tl-time{box-shadow:0 0 0 1.5px var(--paper-2)}
-.sec-btn{background:var(--paper-2);color:var(--ink)}
+.tl-play,.tl-play:active{background:var(--card);color:var(--ink);box-shadow:0 0 0 1px var(--line),0 8px 20px -10px rgba(22,20,46,.4)}
+.tl-time{background:var(--card);color:var(--ink);box-shadow:0 0 0 1px var(--line)}
+.sec-btn{color:var(--ink);padding:18px 22px}
 .sec-time{background:var(--ink);color:var(--paper)}
 .secs li.now{transform:none}
-.secs li.now .sec-btn{box-shadow:inset 3px 0 0 var(--accent)}
+.secs li.now .sec-btn{box-shadow:0 0 0 1.5px var(--accent),0 18px 36px -22px rgba(106,59,242,.55)}
 
-/* cards: quiet fills, no colour tints, no hover jumps */
-.way:hover,.plan:hover,.mate:hover,.find:hover{transform:none}
-.way{background:var(--paper-2);color:var(--ink)}
+/* two ways */
+.way:hover,.find:hover,.plan:hover,.mate:hover{transform:none}
+.way{color:var(--ink)}
 .way p{color:var(--ink-2)}
 .way-ic path,.way-ic rect,.way-ic circle{stroke:var(--ink)}
-.way-ic .f{fill:var(--paper)}
+.way-ic .f{fill:var(--card)}
 .way-ic .w{fill:var(--paper-2)}
 .way-ic .dot{fill:var(--accent);stroke:none}
-.way-tag{background:var(--paper);color:var(--ink);border:1.5px solid var(--ink-2)}
-.num{border-width:2px}
-.steps li:hover .num{background:var(--paper-2);color:var(--ink);transform:none}
-.find,.find:hover{background:var(--paper-2);color:var(--ink);border:0}
-.find-n{background:var(--paper);border:2px solid var(--ink);color:var(--ink)}
+.way-tag{background:var(--paper-2);color:var(--ink);border:0}
 
-/* the one dark band: the research behind every video */
-.band-ink{--band:var(--ink);--band-ink:var(--paper);--band-ink-2:color-mix(in srgb,var(--paper) 72%,var(--ink))}
-.bank-stat .big{font-size:clamp(64px,9vw,120px);line-height:.95;color:var(--paper);text-shadow:none;letter-spacing:-.02em}
+/* how it works: four playing cards */
+.steps.steps-2{gap:18px}
+.steps.steps-2 li{position:relative;flex-direction:column;gap:12px;padding:28px 28px 30px;transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.steps.steps-2 li:hover{transform:translateY(-4px) rotate(-.8deg);box-shadow:0 1px 2px rgba(22,20,46,.04),0 26px 44px -26px rgba(106,59,242,.45)}
+.steps.steps-2 li:nth-child(even):hover{transform:translateY(-4px) rotate(.8deg)}
+.steps.steps-2 li .num{width:auto;height:auto;border:0;border-radius:0;background:none;margin:0;font:400 46px/1 var(--f-magic);font-style:italic;color:var(--accent)}
+.steps.steps-2 li:hover .num{background:none;color:var(--accent);transform:none}
+.steps.steps-2 li::after{position:absolute;top:24px;right:26px;font-size:22px;line-height:1;color:var(--ink)}
+.steps.steps-2 li:nth-child(1)::after{content:"\2660"}
+.steps.steps-2 li:nth-child(2)::after{content:"\2665";color:var(--accent)}
+.steps.steps-2 li:nth-child(3)::after{content:"\2666";color:var(--accent)}
+.steps.steps-2 li:nth-child(4)::after{content:"\2663"}
+.steps.steps-2 h3{margin:0 0 8px}
+
+/* the audit */
+.find,.find:hover{color:var(--ink)}
+.find-n{width:auto;height:auto;border:0;background:none;font:400 34px/1 var(--f-magic);font-style:italic;color:var(--accent)}
+
+/* the one dark stage: the research, under a spotlight */
+.band-ink{--band:#110E24;--band-ink:#F3F0FF;--band-ink-2:#B9B3D6;margin-inline:clamp(10px,2vw,24px);border-radius:clamp(24px,3vw,36px);
+  background:radial-gradient(55% 80% at 18% 30%,rgba(124,77,255,.42),transparent 70%),radial-gradient(40% 60% at 88% 85%,rgba(79,123,255,.28),transparent 70%),#110E24}
+.band-ink .eyebrow{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#CFC8EA}
+.band-ink .suit{color:#B892FF}
+.band-ink h2{margin-top:16px}
+.band-ink .magic{background-image:linear-gradient(100deg,#CDB8FF 0%,#FFFFFF 30%,#9DB8FF 55%,#CDB8FF 80%)}
+.bank-stat .big{white-space:nowrap;font:600 clamp(52px,7.4vw,108px)/.95 var(--f-display);letter-spacing:-.05em;text-shadow:none;color:transparent;background:linear-gradient(120deg,#FFFFFF 10%,#CDB8FF 55%,#9DB8FF);-webkit-background-clip:text;background-clip:text}
 
 /* what you get */
-.gets li{border-bottom:1.5px solid var(--paper-2)}
+.gets li{border-bottom:1px solid var(--line)}
 .gets svg{background:none;border:0;padding:2px}
-.where,.where-list li{border:1.5px solid var(--paper-2)}
-.where-list li:hover{transform:none}
+.where{padding:26px clamp(20px,3vw,34px)}
+.where-list li{border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.where-list li:hover{transform:translateY(-2px)}
 
-/* pricing, comparison, team, faq */
-.plan.pro{background:var(--ink);color:var(--paper)}
-.plan.pro .btn{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
-.plan.pro .btn:hover{background:var(--paper);border-color:var(--paper);color:var(--ink)}
-.save{background:var(--paper);color:var(--ink)}
-.plan.pro .save{background:color-mix(in srgb,var(--paper) 16%,transparent);color:inherit}
+/* pricing */
+.plan{color:var(--ink)}
+.plan.pro{color:#F3F0FF;border-color:transparent;background:radial-gradient(80% 60% at 20% 0%,rgba(124,77,255,.5),transparent 70%),#110E24}
+.plan.pro .btn{background:#FFFFFF;color:#16142E;box-shadow:0 12px 26px -12px rgba(0,0,0,.6)}
+.plan.pro .btn::after{background:linear-gradient(110deg,transparent 30%,rgba(106,59,242,.18) 50%,transparent 70%)}
+.save{background:var(--paper-2);color:var(--ink)}
+.plan.pro .save{background:rgba(255,255,255,.12);color:inherit}
 .save.quiet{background:transparent}
-.cmp-wrap{border:1.5px solid var(--paper-2)}
-.cmp .us{background:color-mix(in srgb,var(--accent) 9%,var(--paper))}
-.cmp thead .us{background:var(--accent);color:var(--on-accent)}
-.mate.has-video:hover h3,.mate.has-video.is-live h3{color:inherit;text-shadow:none}
-.faq details{border:1.5px solid var(--paper-2)}
-.faq summary::after{border-width:1.5px}
-.faq details[open] summary::after,.faq summary:hover::after{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 
-/* book a call: the calendar sits on the page */
-.book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:32px 56px;align-items:start}
+/* comparison, team, faq */
+.cmp thead th{background:var(--paper-2)}
+.cmp th,.cmp td{border-bottom:1px solid var(--line)}
+.cmp .us{background:color-mix(in srgb,var(--accent) 8%,var(--card))}
+.cmp thead .us{background:linear-gradient(135deg,#7D52FF,#5A2DE6);color:#FFFFFF}
+.mate{border-radius:20px}
+.mate.has-video:hover h3,.mate.has-video.is-live h3{color:#FFFFFF;text-shadow:0 0 18px rgba(184,146,255,.8)}
+.faq details[open]{background:var(--card)}
+.faq summary::after{border:1px solid var(--line)}
+.faq details[open] summary::after,.faq summary:hover::after{background:var(--accent);border-color:var(--accent);color:#FFFFFF}
+
+/* book a call: the calendar on a card */
+.book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:32px 56px;align-items:start;
+  width:min(calc(1180px - 2 * var(--g)),calc(100% - 2 * var(--g)));margin:clamp(64px,9vw,120px) auto 0;padding:clamp(24px,4vw,48px);
+  background:var(--card);border:1px solid var(--line);border-radius:clamp(24px,3vw,36px);box-shadow:0 30px 60px -40px rgba(106,59,242,.45)}
 @media (max-width:900px){.book{grid-template-columns:1fr}}
-.book h2{margin-bottom:14px}
+.book h2{margin:16px 0 14px}
 .book-copy p{margin:0 0 22px;font-size:18px;color:var(--ink-2)}
 .book ul{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:12px;font-size:17px}
 .book-copy .book-alt{font-size:15px}
 .book-alt a{color:var(--accent);font-weight:600}
-.calendly-inline-widget{min-width:300px;height:700px;border:1.5px solid var(--paper-2);border-radius:20px;overflow:hidden;background:var(--paper)}
+.calendly-inline-widget{min-width:280px;height:700px;border-radius:20px;overflow:hidden;background:var(--card);box-shadow:0 0 0 1px var(--line)}
 .stage.foot{margin-top:clamp(40px,6vw,72px);height:clamp(150px,15vw,200px)}
+footer{border-top:1px solid var(--line)}
+.faq{margin-inline:auto}
+.price-note{text-align:center}
+
+@media (prefers-reduced-motion: reduce){.magic{animation:none}.hero > *,.card{animation:none}}
 </style>
 </head>
 <body>
@@ -864,18 +956,20 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
 <div class="wrap">
 
   <header class="hero">
-    <div>
-      <h1>Short videos planned from what already grows accounts in your&nbsp;market.</h1>
-      <p class="lede">For founders who already post. We audit your posts and your competitors', find the videos that did three times better than normal and work out why. Then we make yours the same way, from one interview a month or a script you film, and post them to Instagram, TikTok, YouTube Shorts and LinkedIn.</p>
-      <div class="ctas">
-        <a class="btn" href="#book">Book a call</a>
-        <span class="cta-note">Free. We look at your content before we talk.</span>
-      </div>
+    <span class="eyebrow"><span class="suit">&#10022;</span> Now you see what works</span>
+    <h1>Short videos planned from what already <em class="magic">grows</em> accounts in your&nbsp;market.</h1>
+    <p class="lede">For founders who already post. We audit your posts and your competitors', find the videos that did three times better than normal and work out why. Then we make yours the same way, from one interview a month or a script you film, and post them to Instagram, TikTok, YouTube Shorts and LinkedIn.</p>
+    <div class="ctas">
+      <a class="btn" href="#book">Book a call</a>
+      <a class="btn ghost" href="#work">See our work</a>
     </div>
-    <figure class="hero-shot">
-      <video src="work/scg-2.mp4" poster="work/scg-2.webp" muted loop playsinline autoplay preload="metadata" aria-label="A video we made for Schmidt Consulting Group"></video>
-      <figcaption>Made for Schmidt Consulting Group</figcaption>
-    </figure>
+    <p class="cta-note">Free. We look at your content before we talk.</p>
+    <div class="hand">
+      <figure class="card c1"><img src="work/scg-1.webp" alt="" width="270" height="480"></figure>
+      <figure class="card c2"><video src="work/scg-2.mp4" poster="work/scg-2.webp" muted loop playsinline autoplay preload="metadata" aria-label="A video we made for Schmidt Consulting Group"></video></figure>
+      <figure class="card c3"><img src="work/scg-3.webp" alt="" width="270" height="480"></figure>
+    </div>
+    <p class="hand-cap">Made for Schmidt Consulting Group</p>
   </header>
 
   <section class="strip" aria-label="What working with us takes">
@@ -896,7 +990,8 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
   <div class="wrap">
     <div class="block-head">
       <div>
-        <h2>Why some founder videos grow and most don't.</h2>
+        <span class="eyebrow"><span class="suit">&#9824;</span> The first three seconds</span>
+        <h2>Why some founder videos <em class="magic">grow</em> and most don't.</h2>
       </div>
       <p>Two founders can say the same thing and get completely different results. The difference is usually in the first few seconds: the first line, the words on screen, and how fast the video moves.</p>
     </div>
@@ -1006,6 +1101,7 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
   <section class="wrap block" id="ways">
     <div class="block-head">
       <div>
+        <span class="eyebrow"><span class="suit red">&#9829;</span> Film it or talk it</span>
         <h2>Two ways to make your videos.</h2>
       </div>
       <p>On your first call we ask one question: <strong>do you have time to film?</strong></p>
@@ -1031,6 +1127,7 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
   <div class="wrap">
     <div class="block-head">
       <div>
+        <span class="eyebrow"><span class="suit red">&#9830;</span> How it works</span>
         <h2>How we grow you.</h2>
       </div>
       <p>Find what's working, make your videos the same way, keep you posting, and show you what grew.</p>
@@ -1048,6 +1145,7 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
   <section class="wrap block" id="audit">
     <div class="block-head">
       <div>
+        <span class="eyebrow"><span class="suit">&#9827;</span> Where it starts</span>
         <h2>What the audit finds.</h2>
       </div>
       <p>Every client starts with an audit of their content and their competitors'. It answers three questions.</p>
@@ -1066,7 +1164,8 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
       <span class="small">of research on your market before your first video</span>
     </div>
     <div class="bank-copy">
-      <h2>A bank of what works.</h2>
+      <span class="eyebrow"><span class="suit red">&#9830;</span> The research</span>
+      <h2>A bank of what <em class="magic">works</em>.</h2>
       <p>That time goes into your audit and a bank of reference videos from your field. Each one got at least five times as many views as its creator has followers.</p>
       <p>Every video we make for you is planned from that bank.</p>
     </div>
@@ -1076,6 +1175,7 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
   <section class="wrap block" id="get">
     <div class="block-head">
       <div>
+        <span class="eyebrow"><span class="suit">&#9824;</span> Every month</span>
         <h2>What you get every month.</h2>
       </div>
       <p>Everything below is included.</p>
@@ -1108,7 +1208,8 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
     <div class="wrap">
       <div class="block-head">
         <div>
-          <h2>Our work.</h2>
+          <span class="eyebrow"><span class="suit red">&#9829;</span> Real work</span>
+        <h2>Our work.</h2>
         </div>
         <p>Founder videos we've made. Tap one to play.</p>
       </div>
@@ -1122,6 +1223,7 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
   <section class="wrap block" id="pricing">
     <div class="block-head">
       <div>
+        <span class="eyebrow"><span class="suit red">&#9830;</span> No setup fee</span>
         <h2>Pricing.</h2>
       </div>
       <p>The same service at three lengths. Stay longer and you pay less each month.</p>
@@ -1168,6 +1270,7 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
   <section class="wrap block" id="compare">
     <div class="block-head">
       <div>
+        <span class="eyebrow"><span class="suit">&#9827;</span> Editor or us</span>
         <h2>A video editor, or us?</h2>
       </div>
       <p>An editor cuts what you send them. We decide what to make, help you make it, and post it.</p>
@@ -1191,6 +1294,7 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
   <section class="wrap block" id="team">
     <div class="block-head">
       <div>
+        <span class="eyebrow"><span class="suit">&#9824;</span> The team</span>
         <h2>Who you'll work with.</h2>
       </div>
       <p>Two founders. We learn how you talk, plan every video from your audit and pick every moment ourselves.</p>
@@ -1201,6 +1305,7 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
   <section class="wrap block" id="faq">
     <div class="block-head">
       <div>
+        <span class="eyebrow"><span class="suit red">&#9829;</span> Before you book</span>
         <h2>Questions.</h2>
       </div>
       <p>If yours isn't here, ask us on a call.</p>
@@ -1220,7 +1325,8 @@ h2{font-size:clamp(32px,4vw,52px);line-height:1.06}
 
   <section class="wrap block book" id="book">
     <div class="book-copy">
-      <h2>Book a call.</h2>
+      <span class="eyebrow"><span class="suit">&#9827;</span> Free call</span>
+      <h2>Book a <em class="magic">call</em>.</h2>
       <p>A free call to see if we're a fit. Pick a time that suits you.</p>
       <ul>
         <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>We take a quick look at your content before we talk</span></li>
@@ -2298,12 +2404,12 @@ new IntersectionObserver((es, io) => {
   // match the calendar to the page, light or dark
   const cal = document.querySelector('.calendly-inline-widget'), css = getComputedStyle(document.documentElement);
   const tok = n => css.getPropertyValue(n).trim().slice(1);
-  cal.dataset.url += `&background_color=${tok('--paper')}&text_color=${tok('--ink')}&primary_color=${tok('--accent')}`;
+  cal.dataset.url += `&background_color=${tok('--card')}&text_color=${tok('--ink')}&primary_color=${tok('--accent')}`;
   const sc = document.createElement('script');
   sc.src = 'https://assets.calendly.com/assets/external/widget.js'; sc.async = true;
   document.head.appendChild(sc);
 }, { rootMargin: '800px 0px' }).observe(document.getElementById('book'));
-if (reduced) document.querySelector('.hero-shot video').pause();
+if (reduced) document.querySelector('.hand video').pause();
 
 /* ---------- sticky nav: tighten once the page scrolls ---------- */
 (() => { const bar = document.getElementById('navBar'); if (!bar) return; let on = false;
