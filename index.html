@@ -950,7 +950,7 @@ h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.02em}
 .band-ink .suit{color:var(--accent)}
 
 /* who it's for: a lime marker */
-.for{color:var(--on-accent);background:linear-gradient(var(--accent),var(--accent)) no-repeat 0 0/100% 100%;padding:.05em .3em;border-radius:6px;font-weight:800}
+.for{color:var(--accent);background:none;padding:0;margin:0;border-radius:0;font-weight:800;animation:none}
 
 /* nav */
 .nav,.nav-bar.stuck .nav{background:rgba(20,13,38,.72);border-color:var(--line);box-shadow:0 10px 40px -20px rgba(0,0,0,.8)}
@@ -1091,12 +1091,28 @@ footer{background:radial-gradient(50% 120% at 15% 0%,rgba(124,77,255,.35),transp
 .fit-card.yes svg path{stroke:var(--accent)}
 .fit-card.no svg path{stroke:#8E86A8}
 
-/* the headline catches the light where the wand points */
+/* the headline catches a rainbow where the wand points, and sparkles */
 @property --sr{syntax:'<length>';inherits:false;initial-value:0px}
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+.hero{position:relative}
 .hero h1.shine{color:transparent;-webkit-background-clip:text;background-clip:text;
-  background-image:radial-gradient(var(--sr) circle at var(--mx,50%) var(--my,50%),#FFFFFF 0%,#F4FFD0 28%,#CDFB50 55%,rgba(205,251,80,0) 100%),linear-gradient(var(--ink),var(--ink));
-  transition:--sr .5s var(--ease)}
-.hero h1.shine.lit{--sr:160px}
+  background-image:
+    radial-gradient(calc(var(--sr) * .22) circle at var(--mx,50%) var(--my,50%),#FFFFFF,rgba(255,255,255,0)),
+    radial-gradient(var(--sr) circle at var(--mx,50%) var(--my,50%),rgba(245,245,242,0) 0%,rgba(245,245,242,0) 40%,var(--ink) 100%),
+    conic-gradient(from var(--ang) at var(--mx,50%) var(--my,50%),#FF7A8A,#FFD66B,#CDFB50,#5CF2C6,#6FC3FF,#B892FF,#FF8AE2,#FF7A8A);
+  transition:--sr .5s var(--ease);animation:gmSpin 2.4s linear infinite}
+.hero h1.shine.lit{--sr:190px}
+@keyframes gmSpin{to{--ang:360deg}}
+.sparks{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:3}
+.spark{position:absolute;width:var(--s);height:var(--s);margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);background:var(--c);
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);filter:drop-shadow(0 0 6px var(--c));animation:gmSpark .9s ease-out forwards}
+@keyframes gmSpark{0%{transform:scale(0) rotate(0);opacity:1}40%{transform:scale(1.15) rotate(45deg);opacity:1}100%{transform:scale(0) rotate(120deg) translateY(-6px);opacity:0}}
+@media (prefers-reduced-motion: reduce){.hero h1.shine{animation:none}.sparks{display:none}}
+
+/* the logo hat in lime on the dark page */
+.wordmark .gm-hat path[fill="currentColor"]{fill:var(--accent)}
+.wordmark .gm-hat .hat-band{fill:#3C1C7E}
+.wordmark .gm-hat .hat-shine{stroke:#FFFFFF;opacity:.45}
 
 /* the wand: a glowing tip and a trail of dust (desktop pointers only) */
 html.wand,html.wand *{cursor:none!important}
@@ -2646,15 +2662,30 @@ new IntersectionObserver((es, io) => {
   addEventListener('blur', () => { tip.classList.remove('on'); px = -1; });
 })();
 
-/* ---------- the headline shines where the pointer is ---------- */
+/* ---------- the headline shines a rainbow where the pointer is, and sparkles ---------- */
 (() => {
   const h = document.querySelector('.hero h1'), hero = document.querySelector('.hero');
   if (!h || !matchMedia('(pointer: fine)').matches) return;
   h.classList.add('shine');
+  const sparks = document.createElement('div'); sparks.className = 'sparks'; sparks.setAttribute('aria-hidden', 'true'); hero.append(sparks);
+  const COLORS = ['#FFFFFF', '#F4FFD0', '#CDFB50', '#FFD66B', '#6FC3FF', '#B892FF', '#FF8AE2'];
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let lastSpark = 0;
   hero.addEventListener('pointermove', e => {
-    const r = h.getBoundingClientRect();
+    const r = h.getBoundingClientRect(), on = e.clientY > r.top - 60 && e.clientY < r.bottom + 60 && e.clientX > r.left - 60 && e.clientX < r.right + 60;
     h.style.setProperty('--mx', (e.clientX - r.left) + 'px'); h.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    h.classList.toggle('lit', e.clientY > r.top - 80 && e.clientY < r.bottom + 80);
+    h.classList.toggle('lit', on);
+    const now = performance.now();
+    if (!on || calm || now - lastSpark < 55) return;
+    lastSpark = now;
+    const hr = hero.getBoundingClientRect(), sp = document.createElement('i');
+    sp.className = 'spark';
+    sp.style.left = (e.clientX - hr.left + (Math.random() - .5) * 120) + 'px';
+    sp.style.top = (e.clientY - hr.top + (Math.random() - .5) * 80) + 'px';
+    sp.style.setProperty('--s', (8 + Math.random() * 14).toFixed(1) + 'px');
+    sp.style.setProperty('--c', COLORS[(Math.random() * COLORS.length) | 0]);
+    sp.addEventListener('animationend', () => sp.remove());
+    sparks.append(sp);
   });
   hero.addEventListener('pointerleave', () => h.classList.remove('lit'));
 })();
