@@ -1076,6 +1076,20 @@ footer{background:radial-gradient(50% 120% at 15% 0%,rgba(124,77,255,.35),transp
 @media (max-width:820px){.ph,.tl.playing .ph{transform:rotateY(-10deg) rotateX(4deg)}}
 @media (prefers-reduced-motion: reduce){.ph,.tl.playing .ph{transform:rotateY(-12deg) rotateX(4deg)}}
 
+/* who we're a fit for */
+.fits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:820px){.fits{grid-template-columns:1fr}}
+.fit-card{border-radius:var(--r);padding:clamp(24px,3vw,34px);border:1px solid var(--line);background:rgba(255,255,255,.035)}
+.fit-card.yes{border-color:rgba(205,251,80,.45);background:radial-gradient(80% 70% at 0% 0%,rgba(205,251,80,.10),transparent 70%),rgba(255,255,255,.035);box-shadow:0 30px 60px -40px rgba(205,251,80,.35)}
+.fit-card h3{font-size:clamp(22px,2vw,26px);font-weight:800;letter-spacing:-.025em;margin:0 0 18px}
+.fit-card ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.fit-card li{display:grid;grid-template-columns:24px 1fr;gap:12px;font-size:17px;line-height:1.45}
+.fit-card.no li{color:var(--ink-2)}
+.fit-card svg{width:22px;height:22px;margin-top:1px}
+.fit-card svg path{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fit-card.yes svg path{stroke:var(--accent)}
+.fit-card.no svg path{stroke:#8E86A8}
+
 /* the wand: a glowing tip and a trail of dust (desktop pointers only) */
 html.wand,html.wand *{cursor:none!important}
 .wand-tip{position:fixed;left:0;top:0;z-index:10000;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;pointer-events:none;background:#F4FFD0;
@@ -1405,28 +1419,37 @@ html.wand,html.wand *{cursor:none!important}
     </div>
   </section>
 
-  <section class="wrap block" id="compare">
+  <section class="wrap block" id="fit">
     <div class="block-head">
       <div>
-        <span class="eyebrow"><span class="suit">&#9827;</span> Editor or us</span>
-        <h2>A video editor, or us?</h2>
+        <span class="eyebrow"><span class="suit">&#9827;</span> Is this you?</span>
+        <h2>Work with us if you're a <em class="magic">fit</em>.</h2>
       </div>
-      <p>An editor cuts what you send them. We decide what to make, help you make it, and post it.</p>
+      <p>We take on a few clients at a time, so we're picky. Reading this now saves us both a call.</p>
     </div>
-    <div class="cmp-wrap">
-      <table class="cmp">
-        <thead><tr><th scope="col"><span class="sr">What</span></th><th scope="col">Video editor</th><th scope="col" class="us">Growth Magicians</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">What the video says</th><td data-l="Video editor">You decide</td><td class="us" data-l="Growth Magicians">We plan it from your audit</td></tr>
-          <tr><th scope="row">First line, on-screen hook and pace</th><td data-l="Video editor">Their taste</td><td class="us" data-l="Growth Magicians">Guided by videos that already grew other accounts</td></tr>
-          <tr><th scope="row">Filming</th><td data-l="Video editor">You film and plan everything</td><td class="us" data-l="Growth Magicians">You film from our scripts, or we interview you</td></tr>
-          <tr><th scope="row">Captions on the video</th><td data-l="Video editor">Sometimes extra</td><td class="us" data-l="Growth Magicians">Included</td></tr>
-          <tr><th scope="row">Post caption and posting</th><td data-l="Video editor">Usually extra</td><td class="us" data-l="Growth Magicians">Included</td></tr>
-          <tr><th scope="row">Changes</th><td data-l="Video editor">A set number of rounds</td><td class="us" data-l="Growth Magicians">Unlimited</td></tr>
-          <tr><th scope="row">Checking what's working</th><td data-l="Video editor">Not their job</td><td class="us" data-l="Growth Magicians">Growth report every month</td></tr>
-        </tbody>
-      </table>
+    <div class="fits">
+      <div class="fit-card yes">
+        <h3>We're a fit if</h3>
+        <ul>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>You run an agency, a consultancy or a fractional practice, and you're the face of it.</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>You already post, but it's patchy and you can't tell what's working.</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>You'll give us one interview a month, or film from our scripts.</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>You're happy to be on camera. You don't need to be good at it.</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M5 14l5 5L21 7"/></svg><span>You can put $2,500 a month or more into it.</span></li>
+        </ul>
+      </div>
+      <div class="fit-card no">
+        <h3>We're not a fit if</h3>
+        <ul>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M7 7l12 12M19 7L7 19"/></svg><span>You want faceless videos, AI voiceovers or long YouTube videos.</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M7 7l12 12M19 7L7 19"/></svg><span>You want a system built and handed over for your team to run.</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M7 7l12 12M19 7L7 19"/></svg><span>You haven't posted anything yet, so there's nothing for us to audit.</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M7 7l12 12M19 7L7 19"/></svg><span>You want one-off videos or custom jobs outside the monthly plan.</span></li>
+          <li><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M7 7l12 12M19 7L7 19"/></svg><span>You need a guaranteed number of views.</span></li>
+        </ul>
+      </div>
     </div>
+    <div class="mid-cta"><a class="btn" href="#book">Sounds like you? Book a call</a></div>
   </section>
 
   <section class="wrap block" id="team">
@@ -1452,6 +1475,7 @@ html.wand,html.wand *{cursor:none!important}
       <details><summary>Can you guarantee growth?</summary><p>Anyone who guarantees views is guessing. We guarantee the work: 30 videos a month, each one planned from a video that did three times better than normal in your market, posted every week once you approve. Every month you see the numbers video by video, and we make more of whatever's working. On the month-to-month plan, if you don't like what you see, you stop.</p></details>
       <details><summary>Do I have to be good on camera?</summary><p>No. In the interview you're just talking to us. We ask the questions, you answer, and we keep the best parts.</p></details>
       <details><summary>Do I have to film anything?</summary><p>Only if you want to. If you have time, you film from our scripts. If you don't, one monthly interview covers all your videos.</p></details>
+      <details><summary>Why not just hire a video editor?</summary><p>An editor cuts what you send them. We decide what to make, help you make it and post it. Every video is planned from your audit, captions and posting are included, and you get a report every month on what's working.</p></details>
       <details><summary>How long are the videos?</summary><p>Mostly 20 to 60 seconds, made for Instagram, TikTok, YouTube Shorts and LinkedIn.</p></details>
       <details><summary>Do you need access to my accounts?</summary><p>Only to post for you once you approve. For the audit we use public posts only, so no analytics access.</p></details>
       <details><summary>What if I don't like a video?</summary><p>We change it until you do. Revisions are unlimited, and nothing goes out until you approve it.</p></details>
