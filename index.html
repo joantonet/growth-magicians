@@ -138,7 +138,6 @@ h1,.h1{font:600 clamp(44px,7.2vw,96px)/.98 var(--f-display);margin:0;letter-spac
 /* ---------- stage ---------- */
 .stage{position:relative;width:100%;height:clamp(370px,42vw,510px);margin-top:18px;touch-action:pan-y}
 .stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.stage.foot{height:clamp(210px,22vw,290px);margin-top:0}
 .stage-ui{position:absolute;top:10px;left:var(--g);right:var(--g);display:flex;flex-wrap:wrap;gap:8px;align-items:center;pointer-events:none;z-index:2}
 .chip{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;font:600 13.5px/1 var(--f-body);padding:10px 15px;border-radius:999px;border:2px solid var(--ink);background:var(--paper);color:var(--ink)}
 .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--c-mint);border:1.5px solid var(--ink);animation:blink 1.4s steps(2,start) infinite}
@@ -775,6 +774,10 @@ h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.015em}
 .hero .lede{max-width:60ch;margin:0 auto 30px;color:var(--ink-2)}
 .hero .ctas{justify-content:center}
 .hero .cta-note{margin:14px 0 0}
+/* who it's for: a highlighter swipe that draws in after the headline */
+.for{color:var(--ink);font-weight:700;padding:0 .2em;margin-inline:-.1em;border-radius:.25em;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+  background:linear-gradient(transparent 38%,color-mix(in srgb,var(--accent) 28%,transparent) 38%) no-repeat 0 0/100% 100%;animation:gmSwipe .9s var(--ease) .9s backwards}
+@keyframes gmSwipe{from{background-size:0% 100%}}
 .hero > *{animation:gmReveal 1.1s var(--ease) both}
 .hero h1{animation-delay:.08s}
 .hero .lede{animation-delay:.2s}
@@ -913,12 +916,15 @@ h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.015em}
 .book-copy .book-alt{font-size:15px}
 .book-alt a{color:var(--accent);font-weight:600}
 .calendly-inline-widget{min-width:280px;height:700px;border-radius:20px;overflow:hidden;background:var(--card);box-shadow:0 0 0 1px var(--line)}
-.stage.foot{margin-top:clamp(40px,6vw,72px);height:clamp(150px,15vw,200px)}
-footer{border-top:1px solid var(--line)}
+footer{margin-top:clamp(64px,9vw,120px);border-top:0;color:#B9B3D6;
+  background:radial-gradient(50% 120% at 15% 0%,rgba(124,77,255,.35),transparent 70%),radial-gradient(40% 100% at 90% 100%,rgba(79,123,255,.22),transparent 70%),#110E24}
+.foot-row{padding-block:36px 40px;color:#B9B3D6}
+.foot-mark{color:#F3F0FF}
+footer .wordmark .gm-hat .hat-shine{stroke:#110E24}
 .faq{margin-inline:auto}
 .price-note{text-align:center}
 
-@media (prefers-reduced-motion: reduce){.magic{animation:none}.hero > *,.card{animation:none}}
+@media (prefers-reduced-motion: reduce){.magic,.for{animation:none}.hero > *,.card{animation:none}}
 </style>
 </head>
 <body>
@@ -958,7 +964,7 @@ footer{border-top:1px solid var(--line)}
   <header class="hero">
     <span class="eyebrow"><span class="suit">&#10022;</span> Now you see what works</span>
     <h1>Short videos planned from what already <em class="magic">grows</em> accounts in your&nbsp;market.</h1>
-    <p class="lede">For founders who already post. We audit your posts and your competitors', find the videos that did three times better than normal and work out why. Then we make yours the same way, from one interview a month or a script you film, and post them to Instagram, TikTok, YouTube Shorts and LinkedIn.</p>
+    <p class="lede"><strong class="for">For founders who already post.</strong> We audit your posts and your competitors', find the videos that did three times better than normal and work out why. Then we make yours the same way, from one interview a month or a script you film, and post them to Instagram, TikTok, YouTube Shorts and LinkedIn.</p>
     <div class="ctas">
       <a class="btn" href="#book">Book a call</a>
       <a class="btn ghost" href="#work">See our work</a>
@@ -1336,10 +1342,6 @@ footer{border-top:1px solid var(--line)}
       <p class="book-alt">Calendar not showing? <a href="https://calendly.com/jo-growthmagicians/discovery-call" target="_blank" rel="noopener">Book on Calendly</a>.</p>
     </div>
     <div class="calendly-inline-widget" data-url="https://calendly.com/jo-growthmagicians/discovery-call?hide_gdpr_banner=1"></div>
-    <div class="stage foot" id="footStage">
-      <canvas aria-hidden="true"></canvas>
-      <div class="star-tag"></div>
-    </div>
   </section>
 </main>
 </div>
@@ -1350,11 +1352,6 @@ footer{border-top:1px solid var(--line)}
       <h2 class="h1">Notes on getting noticed.</h2>
       <p>Plain-language advice for founders on LinkedIn, search, AI answers and short video, from the Growth Magicians team.</p>
     </header>
-  </div>
-  <div class="stage blog" id="blogStage">
-    <canvas aria-hidden="true"></canvas>
-    <p class="sr">A small crowd of hand-drawn people, many reading books. Point at anyone to make them the star.</p>
-    <div class="star-tag"></div>
   </div>
   <section class="wrap block" style="padding-top:48px" aria-label="All posts">
     <ul class="posts" id="postList"></ul>
@@ -1368,11 +1365,6 @@ footer{border-top:1px solid var(--line)}
       <h2 class="h1">Our work.</h2>
       <p>Short videos we've made for founders and their companies. Point at any video to see it in color, or press play to watch it with sound.</p>
     </header>
-  </div>
-  <div class="stage blog" id="workStage">
-    <canvas aria-hidden="true"></canvas>
-    <p class="sr">A small crowd of hand-drawn people. Point at anyone to make them the star.</p>
-    <div class="star-tag"></div>
   </div>
   <section class="wrap block" style="padding-top:48px" aria-label="All projects">
     <div class="clients" id="allWork"></div>
@@ -2104,8 +2096,6 @@ class Stage {
 }
 
 /* ---------- boot ---------- */
-const foot = new Stage(document.getElementById('footStage'), { rows: 2, rowsSmall: 2, scale: 1.3, yTop: .74, yBot: .97, seed: 21, flip: 1 });
-stages.push(foot);
 
 
 /* ---------- our work (edit this list to add projects) ---------- */
@@ -2489,10 +2479,6 @@ function drawMates(dt, now){
 }
 
 
-const blogStage = new Stage(document.getElementById('blogStage'), { rows: 2, rowsSmall: 2, scale: 1.35, yTop: .74, yBot: .97, seed: 33, flip: 0, bookish: true });
-stages.push(blogStage);
-const workStage = new Stage(document.getElementById('workStage'), { rows: 2, rowsSmall: 2, scale: 1.35, yTop: .74, yBot: .97, seed: 58, flip: 1 });
-stages.push(workStage);
 
 /* ---------- hand-drawn band edges (same boil as the crowd's ground line) ---------- */
 const scribbles = [];
