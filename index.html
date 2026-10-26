@@ -1091,6 +1091,13 @@ footer{background:radial-gradient(50% 120% at 15% 0%,rgba(124,77,255,.35),transp
 .fit-card.yes svg path{stroke:var(--accent)}
 .fit-card.no svg path{stroke:#8E86A8}
 
+/* the headline catches the light where the wand points */
+@property --sr{syntax:'<length>';inherits:false;initial-value:0px}
+.hero h1.shine{color:transparent;-webkit-background-clip:text;background-clip:text;
+  background-image:radial-gradient(var(--sr) circle at var(--mx,50%) var(--my,50%),#FFFFFF 0%,#F4FFD0 28%,#CDFB50 55%,rgba(205,251,80,0) 100%),linear-gradient(var(--ink),var(--ink));
+  transition:--sr .5s var(--ease)}
+.hero h1.shine.lit{--sr:160px}
+
 /* the wand: a glowing tip and a trail of dust (desktop pointers only) */
 html.wand,html.wand *{cursor:none!important}
 .wand-tip{position:fixed;left:0;top:0;z-index:10000;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;pointer-events:none;background:#F4FFD0;
@@ -2639,6 +2646,18 @@ new IntersectionObserver((es, io) => {
   addEventListener('blur', () => { tip.classList.remove('on'); px = -1; });
 })();
 
+/* ---------- the headline shines where the pointer is ---------- */
+(() => {
+  const h = document.querySelector('.hero h1'), hero = document.querySelector('.hero');
+  if (!h || !matchMedia('(pointer: fine)').matches) return;
+  h.classList.add('shine');
+  hero.addEventListener('pointermove', e => {
+    const r = h.getBoundingClientRect();
+    h.style.setProperty('--mx', (e.clientX - r.left) + 'px'); h.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    h.classList.toggle('lit', e.clientY > r.top - 80 && e.clientY < r.bottom + 80);
+  });
+  hero.addEventListener('pointerleave', () => h.classList.remove('lit'));
+})();
 /* ---------- sticky nav: tighten once the page scrolls ---------- */
 (() => { const bar = document.getElementById('navBar'); if (!bar) return; let on = false;
   const f = () => { const s = scrollY > 12; if (s !== on) { on = s; bar.classList.toggle('stuck', s); } };
