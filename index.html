@@ -2225,9 +2225,24 @@ const WORK = [
     about: 'A fractional CMO and agency growth consultancy.',
     services: ['Short video'],
     videos: [
-      { title: 'Trend-style skit', note: 'A popular meme format, rewritten to make a point about growth promises.', src: 'work/scg-1.mp4', poster: 'work/scg-1.webp', href: '' },
-      { title: 'Step-by-step explainer', note: 'The founder walks through a method on camera, one step per scene.', src: 'work/scg-2.mp4', poster: 'work/scg-2.webp', href: '' },
-      { title: 'Answering a real question', note: "A viewer's question, then a straight answer from the founder.", src: 'work/scg-3.mp4', poster: 'work/scg-3.webp', href: '' }
+      { title: 'How to run a sh!t agency', note: 'The founder walks through a method on camera, one step per scene.', src: 'work/scg-2.mp4', poster: 'work/scg-2.webp', href: '', order: 1 },
+      { title: 'Win a client for life', note: 'A founder story told with illustrated scenes around him.', src: 'work/scg-client-for-life.mp4', poster: 'work/scg-client-for-life.webp', href: '', order: 3 }
+    ]
+  },
+  {
+    client: 'Creators Club Australia',
+    about: 'A community for creators in Australia.',
+    services: ['Motion graphics'],
+    videos: [
+      { title: 'Finding community', note: 'A hand-drawn motion piece on why creators struggle to connect.', src: 'work/cca-finding-community.mp4', poster: 'work/cca-finding-community.webp', href: '', order: 2 }
+    ]
+  },
+  {
+    client: 'Never Search Alone',
+    about: 'A line-art explainer.',
+    services: ['Explainer'],
+    videos: [
+      { title: 'Never search alone', note: 'A line-art explainer, one idea per scene.', src: 'work/nsa-never-search-alone.mp4', poster: 'work/nsa-never-search-alone.webp', href: '', order: 4 }
     ]
   }
 ];
@@ -2312,7 +2327,7 @@ if (matchMedia('(hover: none)').matches){
 }
 function renderWork(){
   const host = document.getElementById('workList');
-  const items = WORK.flatMap(w => w.videos.map(v => ({ ...v, client: w.client, service: w.services[0] })));
+  const items = WORK.flatMap(w => w.videos.map(v => ({ ...v, client: w.client, service: w.services[0] }))).sort((a, b) => (a.order || 0) - (b.order || 0));
   const set = clone => items.map((v, i) => vidCard(v, VID_COLORS[i % VID_COLORS.length], clone)).join('');
   host.innerHTML = `<div class="marquee" id="marquee"><div class="marquee-track" id="track">${set(false)}</div></div>
     <div class="marquee-ui"><a class="btn ghost" href="#our-work">See all our work${ICON_ARROW}</a><button class="icon-btn" type="button" id="mqToggle" aria-label="Pause the reel">${ICON_PAUSE}</button></div>`;
